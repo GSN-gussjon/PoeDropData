@@ -13,6 +13,7 @@ const ITEM_TYPES = [
   'UniqueJewel',
   'UniqueFlask',
   'UniqueRelic',
+  'UniqueMap',
   'SkillGem'
 ]
 const CURRENCY_TYPES = ['Currency', 'Fragment']

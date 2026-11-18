@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-18T12:51:40.064Z",
+  "generatedAt": "2026-11-18T15:05:31.516Z",
   "league": "Covens",
   "source": {
     "name": "poe.ninja",
@@ -8,80 +8,86 @@
   },
   "prices": {
     "the golden charlatan": {
-      "chaos": 21824,
-      "divine": 110,
+      "chaos": 29064,
+      "divine": 141.5,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "voidforge": {
-      "chaos": 6746,
+      "chaos": 6984,
       "divine": 34,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "echoforge": {
-      "chaos": 396.8,
+      "chaos": 410.8,
       "divine": 2,
       "variant": null,
       "source": "UniqueWeapon"
     },
-    "legacy of the rose": {
-      "chaos": 20,
-      "divine": 0.1,
+    "starforge": {
+      "chaos": 410.8,
+      "divine": 2,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "atziri's disfavour": {
-      "chaos": 966.8,
-      "divine": 4.87,
+      "chaos": 821.6,
+      "divine": 4,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "festering resentment": {
-      "chaos": 793.6,
+      "chaos": 821.6,
       "divine": 4,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "pledge of hands": {
-      "chaos": 50,
-      "divine": 0.25,
+      "chaos": 45,
+      "divine": 0.22,
       "variant": null,
       "source": "UniqueWeapon"
     },
-    "starforge": {
-      "chaos": 396.8,
-      "divine": 2,
+    "the annihilating light": {
+      "chaos": 9,
+      "divine": 0.04,
+      "variant": null,
+      "source": "UniqueWeapon"
+    },
+    "legacy of the rose": {
+      "chaos": 25,
+      "divine": 0.12,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "the burden of shadows": {
       "chaos": 3,
-      "divine": 0.02,
-      "variant": null,
-      "source": "UniqueWeapon"
-    },
-    "the annihilating light": {
-      "chaos": 12,
-      "divine": 0.06,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "the saviour": {
-      "chaos": 396.8,
+      "chaos": 410.8,
       "divine": 2,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "starcaller": {
-      "chaos": 15,
-      "divine": 0.08,
+      "chaos": 14,
+      "divine": 0.07,
+      "variant": null,
+      "source": "UniqueWeapon"
+    },
+    "the gluttonous tide": {
+      "chaos": 1,
+      "divine": null,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "grace of the goddess": {
-      "chaos": 80,
-      "divine": 0.4,
+      "chaos": 90,
+      "divine": 0.44,
       "variant": null,
       "source": "UniqueWeapon"
     },
@@ -93,19 +99,19 @@
     },
     "atziri's rule": {
       "chaos": 19,
-      "divine": 0.1,
+      "divine": 0.09,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "wing of the wyvern": {
       "chaos": 15,
-      "divine": 0.08,
+      "divine": 0.07,
       "variant": null,
       "source": "UniqueWeapon"
     },
     "disintegrator": {
       "chaos": 5,
-      "divine": 0.03,
+      "divine": 0.02,
       "variant": null,
       "source": "UniqueWeapon"
     },
@@ -139,27 +145,21 @@
       "variant": null,
       "source": "UniqueWeapon"
     },
-    "the gluttonous tide": {
-      "chaos": 1,
-      "divine": 0.01,
-      "variant": null,
-      "source": "UniqueWeapon"
-    },
     "crown of the tyrant": {
-      "chaos": 2976,
+      "chaos": 3081,
       "divine": 15,
       "variant": null,
       "source": "UniqueArmour"
     },
     "the apostate": {
-      "chaos": 793.6,
+      "chaos": 821.6,
       "divine": 4,
       "variant": null,
       "source": "UniqueArmour"
     },
     "garb of the ephemeral": {
-      "chaos": 380,
-      "divine": 1.92,
+      "chaos": 399.3,
+      "divine": 1.94,
       "variant": null,
       "source": "UniqueArmour"
     },
@@ -170,20 +170,14 @@
       "source": "UniqueArmour"
     },
     "doppelganger guise": {
-      "chaos": 290,
+      "chaos": 300,
       "divine": 1.46,
       "variant": null,
       "source": "UniqueArmour"
     },
     "mantle of dreams": {
-      "chaos": 20,
-      "divine": 0.1,
-      "variant": null,
-      "source": "UniqueArmour"
-    },
-    "seven teachings": {
-      "chaos": 3,
-      "divine": 0.02,
+      "chaos": 15,
+      "divine": 0.07,
       "variant": null,
       "source": "UniqueArmour"
     },
@@ -194,8 +188,14 @@
       "source": "UniqueArmour"
     },
     "the celestial brace": {
-      "chaos": 396.8,
+      "chaos": 410.8,
       "divine": 2,
+      "variant": null,
+      "source": "UniqueArmour"
+    },
+    "seven teachings": {
+      "chaos": 3,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueArmour"
     },
@@ -212,74 +212,68 @@
       "source": "UniqueArmour"
     },
     "atziri's acuity": {
-      "chaos": 175,
-      "divine": 0.88,
+      "chaos": 182,
+      "divine": 0.89,
       "variant": null,
       "source": "UniqueArmour"
     },
     "soul ascension": {
-      "chaos": 64.8,
-      "divine": 0.33,
+      "chaos": 63.4,
+      "divine": 0.31,
       "variant": null,
       "source": "UniqueArmour"
     },
     "the unblinking eye": {
-      "chaos": 40,
-      "divine": 0.2,
+      "chaos": 50,
+      "divine": 0.24,
       "variant": null,
       "source": "UniqueArmour"
     },
     "atziri's reflection": {
-      "chaos": 36.4,
-      "divine": 0.18,
+      "chaos": 29.8,
+      "divine": 0.15,
       "variant": null,
       "source": "UniqueArmour"
     },
     "annihilation's approach": {
-      "chaos": 24.2,
+      "chaos": 25,
       "divine": 0.12,
       "variant": null,
       "source": "UniqueArmour"
     },
     "command of the pit": {
-      "chaos": 24,
-      "divine": 0.12,
-      "variant": null,
-      "source": "UniqueArmour"
-    },
-    "entropic devastation": {
       "chaos": 20,
       "divine": 0.1,
       "variant": null,
       "source": "UniqueArmour"
     },
-    "hands of the high templar": {
-      "chaos": 19,
-      "divine": 0.1,
-      "variant": null,
-      "source": "UniqueArmour"
-    },
-    "echoes of creation": {
+    "voidfletcher": {
       "chaos": 18,
       "divine": 0.09,
       "variant": null,
       "source": "UniqueArmour"
     },
-    "voidfletcher": {
-      "chaos": 17.7,
-      "divine": 0.09,
+    "entropic devastation": {
+      "chaos": 16.4,
+      "divine": 0.08,
       "variant": null,
       "source": "UniqueArmour"
     },
-    "indigon": {
-      "chaos": 14,
+    "hands of the high templar": {
+      "chaos": 15,
       "divine": 0.07,
       "variant": null,
       "source": "UniqueArmour"
     },
-    "ravenous passion": {
-      "chaos": 14,
-      "divine": 0.07,
+    "viridi's veil": {
+      "chaos": 12,
+      "divine": 0.06,
+      "variant": null,
+      "source": "UniqueArmour"
+    },
+    "echoes of creation": {
+      "chaos": 12,
+      "divine": 0.06,
       "variant": null,
       "source": "UniqueArmour"
     },
@@ -289,27 +283,39 @@
       "variant": null,
       "source": "UniqueArmour"
     },
-    "viridi's veil": {
-      "chaos": 8.2,
-      "divine": 0.04,
+    "indigon": {
+      "chaos": 11.6,
+      "divine": 0.06,
       "variant": null,
       "source": "UniqueArmour"
     },
     "crown of the inward eye": {
-      "chaos": 8,
-      "divine": 0.04,
+      "chaos": 11,
+      "divine": 0.05,
+      "variant": null,
+      "source": "UniqueArmour"
+    },
+    "ravenous passion": {
+      "chaos": 10,
+      "divine": 0.05,
+      "variant": null,
+      "source": "UniqueArmour"
+    },
+    "legacy of fury": {
+      "chaos": 5,
+      "divine": 0.02,
       "variant": null,
       "source": "UniqueArmour"
     },
     "the dark monarch": {
       "chaos": 5,
-      "divine": 0.03,
+      "divine": 0.02,
       "variant": null,
       "source": "UniqueArmour"
     },
     "bitter instinct": {
       "chaos": 5,
-      "divine": 0.03,
+      "divine": 0.02,
       "variant": null,
       "source": "UniqueArmour"
     },
@@ -325,45 +331,39 @@
       "variant": null,
       "source": "UniqueArmour"
     },
+    "the devourer of minds": {
+      "chaos": 4,
+      "divine": 0.02,
+      "variant": null,
+      "source": "UniqueArmour"
+    },
     "mask of the tribunal": {
-      "chaos": 4,
-      "divine": 0.02,
-      "variant": null,
-      "source": "UniqueArmour"
-    },
-    "legacy of fury": {
-      "chaos": 4,
-      "divine": 0.02,
-      "variant": null,
-      "source": "UniqueArmour"
-    },
-    "hale negator": {
       "chaos": 3,
-      "divine": 0.02,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueArmour"
     },
     "perepiteia": {
       "chaos": 3,
-      "divine": 0.02,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueArmour"
     },
-    "the devourer of minds": {
+    "offering to the serpent": {
       "chaos": 3,
-      "divine": 0.02,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueArmour"
     },
     "the tempest rising": {
       "chaos": 3,
-      "divine": 0.02,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueArmour"
     },
     "the caged mammoth": {
       "chaos": 3,
-      "divine": 0.02,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueArmour"
     },
@@ -373,7 +373,7 @@
       "variant": null,
       "source": "UniqueArmour"
     },
-    "offering to the serpent": {
+    "hale negator": {
       "chaos": 2,
       "divine": 0.01,
       "variant": null,
@@ -386,98 +386,92 @@
       "source": "UniqueArmour"
     },
     "refuge in isolation": {
-      "chaos": 2,
+      "chaos": 1.5,
       "divine": 0.01,
       "variant": null,
       "source": "UniqueArmour"
     },
     "voidwalker": {
       "chaos": 1,
-      "divine": 0.01,
+      "divine": null,
       "variant": null,
       "source": "UniqueArmour"
     },
     "blasphemer's grasp": {
       "chaos": 1,
-      "divine": 0.01,
+      "divine": null,
       "variant": null,
       "source": "UniqueArmour"
     },
     "inextricable fate": {
       "chaos": 1,
-      "divine": 0.01,
+      "divine": null,
       "variant": null,
       "source": "UniqueArmour"
     },
     "dawnstrider": {
       "chaos": 1,
-      "divine": 0.01,
+      "divine": null,
       "variant": null,
       "source": "UniqueArmour"
     },
     "nimis": {
-      "chaos": 23808,
-      "divine": 120,
+      "chaos": 24792,
+      "divine": 120.7,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "the tides of time": {
-      "chaos": 2976,
-      "divine": 15,
+      "chaos": 3492,
+      "divine": 17,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "uzaza's valley": {
-      "chaos": 1587,
-      "divine": 8,
-      "variant": null,
-      "source": "UniqueAccessory"
-    },
-    "woespike": {
-      "chaos": 595.2,
-      "divine": 3,
+      "chaos": 1561,
+      "divine": 7.6,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "uzaza's meadow": {
-      "chaos": 500,
-      "divine": 2.52,
+      "chaos": 562.2,
+      "divine": 2.74,
+      "variant": null,
+      "source": "UniqueAccessory"
+    },
+    "woespike": {
+      "chaos": 410.8,
+      "divine": 2,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "putembo's mountain": {
-      "chaos": 396.8,
-      "divine": 2,
+      "chaos": 404.3,
+      "divine": 1.97,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "whispers of infinity": {
-      "chaos": 396.8,
-      "divine": 2,
+      "chaos": 380,
+      "divine": 1.85,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "ashes of the stars": {
-      "chaos": 99.5,
-      "divine": 0.5,
+      "chaos": 99,
+      "divine": 0.48,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "uzaza's mountain": {
-      "chaos": 52.5,
-      "divine": 0.26,
+      "chaos": 59.4,
+      "divine": 0.29,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "ahkeli's meadow": {
-      "chaos": 40,
-      "divine": 0.2,
-      "variant": null,
-      "source": "UniqueAccessory"
-    },
-    "zana's ingenuity": {
       "chaos": 35,
-      "divine": 0.18,
+      "divine": 0.17,
       "variant": null,
       "source": "UniqueAccessory"
     },
@@ -487,27 +481,33 @@
       "variant": null,
       "source": "UniqueAccessory"
     },
-    "putembo's valley": {
-      "chaos": 25,
-      "divine": 0.13,
+    "zana's ingenuity": {
+      "chaos": 30,
+      "divine": 0.15,
       "variant": null,
       "source": "UniqueAccessory"
     },
-    "aul's uprising": {
-      "chaos": 25,
+    "enmity's embrace": {
+      "chaos": 27.4,
       "divine": 0.13,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "coiling whisper": {
       "chaos": 25,
-      "divine": 0.13,
+      "divine": 0.12,
       "variant": null,
       "source": "UniqueAccessory"
     },
-    "enmity's embrace": {
-      "chaos": 25,
-      "divine": 0.13,
+    "putembo's valley": {
+      "chaos": 24,
+      "divine": 0.12,
+      "variant": null,
+      "source": "UniqueAccessory"
+    },
+    "aul's uprising": {
+      "chaos": 20,
+      "divine": 0.1,
       "variant": null,
       "source": "UniqueAccessory"
     },
@@ -523,27 +523,27 @@
       "variant": null,
       "source": "UniqueAccessory"
     },
-    "venarius' astrolabe": {
-      "chaos": 12,
-      "divine": 0.06,
-      "variant": null,
-      "source": "UniqueAccessory"
-    },
     "curio of decay": {
-      "chaos": 11,
+      "chaos": 13,
       "divine": 0.06,
       "variant": null,
       "source": "UniqueAccessory"
     },
-    "arn's anguish": {
-      "chaos": 10,
+    "venarius' astrolabe": {
+      "chaos": 11,
       "divine": 0.05,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "putembo's meadow": {
-      "chaos": 9.2,
+      "chaos": 10,
       "divine": 0.05,
+      "variant": null,
+      "source": "UniqueAccessory"
+    },
+    "arn's anguish": {
+      "chaos": 9,
+      "divine": 0.04,
       "variant": null,
       "source": "UniqueAccessory"
     },
@@ -554,6 +554,18 @@
       "source": "UniqueAccessory"
     },
     "crystallised omniscience": {
+      "chaos": 8,
+      "divine": 0.04,
+      "variant": null,
+      "source": "UniqueAccessory"
+    },
+    "curio of potential": {
+      "chaos": 7.5,
+      "divine": 0.04,
+      "variant": null,
+      "source": "UniqueAccessory"
+    },
+    "ahkeli's mountain": {
       "chaos": 6,
       "divine": 0.03,
       "variant": null,
@@ -561,19 +573,13 @@
     },
     "impresence": {
       "chaos": 5,
-      "divine": 0.03,
+      "divine": 0.02,
       "variant": "Chaos",
-      "source": "UniqueAccessory"
-    },
-    "ahkeli's mountain": {
-      "chaos": 5,
-      "divine": 0.03,
-      "variant": null,
       "source": "UniqueAccessory"
     },
     "call of the void": {
       "chaos": 5,
-      "divine": 0.03,
+      "divine": 0.02,
       "variant": null,
       "source": "UniqueAccessory"
     },
@@ -583,27 +589,21 @@
       "variant": null,
       "source": "UniqueAccessory"
     },
-    "curio of potential": {
-      "chaos": 4,
-      "divine": 0.02,
+    "the arkhon's tools": {
+      "chaos": 3,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "betrayal's sting": {
-      "chaos": 4,
-      "divine": 0.02,
-      "variant": null,
-      "source": "UniqueAccessory"
-    },
-    "the arkhon's tools": {
       "chaos": 3,
-      "divine": 0.02,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "the unseen hue": {
       "chaos": 3,
-      "divine": 0.02,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueAccessory"
     },
@@ -650,68 +650,68 @@
       "source": "UniqueAccessory"
     },
     "haunting memories": {
-      "chaos": 1.8,
+      "chaos": 2,
       "divine": 0.01,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "cyclopean coil": {
       "chaos": 1,
-      "divine": 0.01,
+      "divine": null,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "bonemeld": {
       "chaos": 1,
-      "divine": 0.01,
+      "divine": null,
       "variant": null,
       "source": "UniqueAccessory"
     },
     "rational doctrine": {
-      "chaos": 2182,
+      "chaos": 2259,
       "divine": 11,
       "variant": null,
       "source": "UniqueJewel"
     },
     "beauty": {
-      "chaos": 1255,
-      "divine": 6.32,
+      "chaos": 1438,
+      "divine": 7,
       "variant": null,
       "source": "UniqueJewel"
     },
     "dissolution of the flesh": {
-      "chaos": 200,
-      "divine": 1.01,
+      "chaos": 197.1,
+      "divine": 0.96,
       "variant": null,
       "source": "UniqueJewel"
     },
     "sublime vision": {
       "chaos": 100,
-      "divine": 0.5,
+      "divine": 0.49,
       "variant": null,
       "source": "UniqueJewel"
     },
     "melding of the flesh": {
-      "chaos": 70,
-      "divine": 0.35,
+      "chaos": 80,
+      "divine": 0.39,
       "variant": null,
       "source": "UniqueJewel"
     },
     "watcher's eye": {
-      "chaos": 46,
-      "divine": 0.23,
+      "chaos": 35,
+      "divine": 0.17,
       "variant": null,
       "source": "UniqueJewel"
     },
     "forbidden flesh": {
-      "chaos": 40,
-      "divine": 0.2,
+      "chaos": 34.4,
+      "divine": 0.17,
       "variant": null,
       "source": "UniqueJewel"
     },
     "curiosity": {
-      "chaos": 40,
-      "divine": 0.2,
+      "chaos": 30,
+      "divine": 0.15,
       "variant": null,
       "source": "UniqueJewel"
     },
@@ -722,62 +722,62 @@
       "source": "UniqueJewel"
     },
     "thread of hope": {
-      "chaos": 10,
+      "chaos": 15,
+      "divine": 0.07,
+      "variant": null,
+      "source": "UniqueJewel"
+    },
+    "the light of meaning": {
+      "chaos": 11,
       "divine": 0.05,
       "variant": null,
       "source": "UniqueJewel"
     },
     "bound by destiny": {
-      "chaos": 8.8,
-      "divine": 0.04,
-      "variant": null,
-      "source": "UniqueJewel"
-    },
-    "the light of meaning": {
-      "chaos": 7.8,
+      "chaos": 8,
       "divine": 0.04,
       "variant": null,
       "source": "UniqueJewel"
     },
     "impossible escape": {
-      "chaos": 7,
-      "divine": 0.04,
+      "chaos": 3,
+      "divine": 0.01,
       "variant": null,
       "source": "UniqueJewel"
     },
     "progenesis": {
-      "chaos": 14086,
-      "divine": 71,
+      "chaos": 14173,
+      "divine": 69,
       "variant": null,
       "source": "UniqueFlask"
     },
     "wine of the prophet": {
-      "chaos": 3889,
-      "divine": 19.6,
+      "chaos": 4724,
+      "divine": 23,
       "variant": null,
       "source": "UniqueFlask"
     },
     "dying sun": {
-      "chaos": 2579,
-      "divine": 13,
+      "chaos": 2876,
+      "divine": 14,
       "variant": null,
       "source": "UniqueFlask"
     },
     "bottled faith": {
-      "chaos": 1389,
+      "chaos": 1438,
       "divine": 7,
       "variant": null,
       "source": "UniqueFlask"
     },
     "oriath's end": {
-      "chaos": 1190,
-      "divine": 6,
+      "chaos": 1438,
+      "divine": 7,
       "variant": null,
       "source": "UniqueFlask"
     },
     "wellwater phylactery": {
       "chaos": 5,
-      "divine": 0.03,
+      "divine": 0.02,
       "variant": null,
       "source": "UniqueFlask"
     },
@@ -787,57 +787,63 @@
       "variant": null,
       "source": "UniqueFlask"
     },
-    "greater spell echo support": {
-      "chaos": 9860,
-      "divine": 49.7,
+    "doryani's machinarium": {
+      "chaos": 40,
+      "divine": 0.19,
+      "variant": null,
+      "source": "UniqueMap"
+    },
+    "awakened empower support": {
+      "chaos": 4724,
+      "divine": 23,
       "variant": "1",
       "source": "SkillGem"
     },
-    "awakened empower support": {
-      "chaos": 2678,
-      "divine": 13.5,
-      "variant": "4c",
+    "awakened enlighten support": {
+      "chaos": 5073,
+      "divine": 24.7,
+      "variant": "1",
       "source": "SkillGem"
     },
-    "awakened enlighten support": {
-      "chaos": 4960,
-      "divine": 25,
+    "greater spell echo support": {
+      "chaos": 10065,
+      "divine": 49,
+      "variant": "1",
+      "source": "SkillGem"
+    },
+    "awakened enhance support": {
+      "chaos": 1027,
+      "divine": 5,
       "variant": "1",
       "source": "SkillGem"
     },
     "eclipse support": {
-      "chaos": 2381,
+      "chaos": 2465,
       "divine": 12,
       "variant": "1",
       "source": "SkillGem"
     },
     "congregation support": {
-      "chaos": 1389,
+      "chaos": 1438,
       "divine": 7,
       "variant": "1",
       "source": "SkillGem"
     },
     "invert the rules support": {
-      "chaos": 793.6,
+      "chaos": 821.6,
       "divine": 4,
       "variant": "1",
       "source": "SkillGem"
     },
     "frostmage support": {
-      "chaos": 15,
-      "divine": 0.08,
-      "variant": "1",
-      "source": "SkillGem"
-    },
-    "void shockwave support": {
-      "chaos": 30,
-      "divine": 0.15,
+      "chaos": 19,
+      "divine": 0.09,
       "variant": "1",
       "source": "SkillGem"
     },
     "vaal sacrifice support": {
       "chaos": 3,
-      "divine": 0.02,
+      "divine": 0.01,
       "variant": "1",
       "source": "SkillGem"
     },
@@ -853,39 +859,39 @@
       "variant": "1",
       "source": "SkillGem"
     },
-    "awakened enhance support": {
-      "chaos": 793.6,
-      "divine": 4,
-      "variant": "1",
-      "source": "SkillGem"
-    },
     "overheat support": {
       "chaos": 2,
       "divine": 0.01,
       "variant": "1",
       "source": "SkillGem"
     },
+    "void shockwave support": {
+      "chaos": 32,
+      "divine": 0.16,
+      "variant": "1",
+      "source": "SkillGem"
+    },
     "greater devour support": {
-      "chaos": 4,
+      "chaos": 5,
       "divine": 0.02,
+      "variant": "1",
+      "source": "SkillGem"
+    },
+    "hexpass support": {
+      "chaos": 3,
+      "divine": 0.01,
+      "variant": "1",
+      "source": "SkillGem"
+    },
+    "voidstorm support": {
+      "chaos": 3,
+      "divine": 0.01,
       "variant": "1",
       "source": "SkillGem"
     },
     "gluttony support": {
       "chaos": 2,
       "divine": 0.01,
-      "variant": "1",
-      "source": "SkillGem"
-    },
-    "hexpass support": {
-      "chaos": 3,
-      "divine": 0.02,
-      "variant": "1",
-      "source": "SkillGem"
-    },
-    "voidstorm support": {
-      "chaos": 3,
-      "divine": 0.02,
       "variant": "1",
       "source": "SkillGem"
     },
@@ -902,157 +908,145 @@
       "source": "SkillGem"
     },
     "shiny reliquary key": {
-      "chaos": 313.5,
+      "chaos": 309,
       "divine": null,
       "variant": null,
       "source": "Fragment"
     },
     "oubliette reliquary key": {
-      "chaos": 132,
+      "chaos": 115,
       "divine": null,
       "variant": null,
       "source": "Fragment"
     },
     "forgotten reliquary key": {
-      "chaos": 110.8,
+      "chaos": 104,
       "divine": null,
       "variant": null,
       "source": "Fragment"
     },
     "traumatic reliquary key": {
-      "chaos": 54.2,
-      "divine": null,
-      "variant": null,
-      "source": "Fragment"
-    },
-    "archive reliquary key": {
-      "chaos": 51.2,
-      "divine": null,
-      "variant": null,
-      "source": "Fragment"
-    },
-    "decaying reliquary key": {
-      "chaos": 44,
+      "chaos": 52.7,
       "divine": null,
       "variant": null,
       "source": "Fragment"
     },
     "awakener's orb": {
-      "chaos": 143.2,
+      "chaos": 136.5,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "elder's exalted orb": {
-      "chaos": 16.59,
+      "chaos": 17.03,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "eldritch chaos orb": {
-      "chaos": 61.88,
+      "chaos": 63.87,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "eldritch exalted orb": {
-      "chaos": 2.65,
+      "chaos": 2.88,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "eldritch orb of annulment": {
-      "chaos": 42.25,
+      "chaos": 43.69,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "exceptional eldritch ichor": {
-      "chaos": 20.8,
+      "chaos": 23.86,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "orb of conflict": {
-      "chaos": 68.01,
+      "chaos": 66.1,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "orb of intention": {
-      "chaos": 0.9333,
+      "chaos": 0.875,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "orb of remembrance": {
-      "chaos": 57.25,
+      "chaos": 58.36,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "orb of unravelling": {
-      "chaos": 10.21,
+      "chaos": 9.45,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "shaper's exalted orb": {
-      "chaos": 84.79,
+      "chaos": 85.18,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "soul core of finesse": {
-      "chaos": 1052,
+      "chaos": 1056,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "soul core of instability": {
-      "chaos": 257.8,
+      "chaos": 258.3,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "soul core of might": {
-      "chaos": 1119,
+      "chaos": 1111,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "exceptional eldritch ember": {
-      "chaos": 20.31,
+      "chaos": 20.53,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "orb of dominance": {
-      "chaos": 323.4,
+      "chaos": 328.1,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "soul core of intellect": {
-      "chaos": 1036,
+      "chaos": 1018,
       "divine": null,
       "variant": null,
       "source": "exchange:Currency"
     },
     "royal visage": {
-      "chaos": 176.8,
+      "chaos": 184.3,
       "divine": null,
       "variant": null,
       "source": "exchange:Fragment"
     },
     "zorath's eye of the inevitable": {
-      "chaos": 1559,
+      "chaos": 1658,
       "divine": null,
       "variant": null,
       "source": "exchange:Fragment"
     },
     "a fate worse than death": {
-      "chaos": 13.21,
+      "chaos": 12.93,
       "divine": null,
       "variant": null,
       "source": "exchange:DivinationCard"
@@ -1064,49 +1058,55 @@
       "source": "exchange:DivinationCard"
     },
     "desecrated virtue": {
-      "chaos": 222.1,
+      "chaos": 230.9,
       "divine": null,
       "variant": null,
       "source": "exchange:DivinationCard"
     },
     "luminous trove": {
-      "chaos": 90.01,
+      "chaos": 98.92,
       "divine": null,
       "variant": null,
       "source": "exchange:DivinationCard"
     },
     "the endless darkness": {
-      "chaos": 631.5,
+      "chaos": 648.7,
+      "divine": null,
+      "variant": null,
+      "source": "exchange:DivinationCard"
+    },
+    "triskaidekaphobia": {
+      "chaos": 1.88,
       "divine": null,
       "variant": null,
       "source": "exchange:DivinationCard"
     },
     "imperfect memories": {
-      "chaos": 1.89,
+      "chaos": 3.22,
       "divine": null,
       "variant": null,
       "source": "exchange:DivinationCard"
     },
     "misery in darkness": {
-      "chaos": 8.15,
+      "chaos": 1,
       "divine": null,
       "variant": null,
       "source": "exchange:DivinationCard"
     },
     "monochrome": {
-      "chaos": 40.26,
+      "chaos": 44.47,
       "divine": null,
       "variant": null,
       "source": "exchange:DivinationCard"
     },
     "the hook": {
-      "chaos": 24.46,
+      "chaos": 25.37,
       "divine": null,
       "variant": null,
       "source": "exchange:DivinationCard"
     },
     "the price of devotion": {
-      "chaos": 3841,
+      "chaos": 4082,
       "divine": null,
       "variant": null,
       "source": "exchange:DivinationCard"

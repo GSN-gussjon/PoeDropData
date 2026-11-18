@@ -22,18 +22,28 @@ export function RankingBoard({ username }: { username: string }) {
 
   useEffect(() => {
     let active = true
-    supabase
-      .from('player_ranking')
-      .select('*')
-      .order('total_chaos', { ascending: false })
-      .then(({ data, error: fetchError }) => {
-        if (!active) return
-        if (fetchError) setError(fetchError.message)
-        else setRows((data ?? []) as RankingRow[])
-        setLoading(false)
-      })
+
+    const refresh = () => {
+      supabase
+        .from('player_ranking')
+        .select('*')
+        .order('total_chaos', { ascending: false })
+        .then(({ data, error: fetchError }) => {
+          if (!active) return
+          if (fetchError) setError(fetchError.message)
+          else {
+            setError(null)
+            setRows((data ?? []) as RankingRow[])
+          }
+          setLoading(false)
+        })
+    }
+
+    refresh()
+    const interval = window.setInterval(refresh, 30_000)
     return () => {
       active = false
+      window.clearInterval(interval)
     }
   }, [])
 
@@ -56,7 +66,7 @@ export function RankingBoard({ username }: { username: string }) {
         <div>
           <div className="content-kicker">Ranking zbiorczy</div>
           <p className="stats-subtitle">
-            Wartość dropu liczona z cen w momencie dodania wpisu.
+            Wartość dropu liczona z cen w momencie dodania wpisu. Odświeża się co 30 s.
           </p>
         </div>
         <div className="ranking-controls">

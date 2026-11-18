@@ -372,8 +372,12 @@ button, input { font: inherit; }
 
 /* Ranking zbiorczy */
 .ranking-board { padding: 28px 34px 8px; border-bottom: 1px solid var(--border); }
-.ranking-table { max-width: 900px; }
+.ranking-table { width: 100%; max-width: none; }
 .ranking-table th, .ranking-table td { padding: 10px 14px; }
+.ranking-table th:nth-child(1) { width: 70px; }
+.ranking-table th:nth-child(2) { width: 45%; }
+.ranking-table th:nth-child(3) { width: 20%; }
+.ranking-table th:nth-child(4) { width: 25%; }
 .ranking-table thead th { text-align: left; }
 .ranking-place { width: 50px; color: var(--muted); }
 .ranking-value { color: #9fd97f; font-weight: 700; }

@@ -27,20 +27,29 @@ export function BossRanking({ boss, username }: { boss: Boss; username: string }
 
   useEffect(() => {
     let active = true
-    setLoading(true)
-    supabase
-      .from('boss_player_ranking')
-      .select('*')
-      .eq('boss_id', boss.id)
-      .eq('variant', variantLabel)
-      .then(({ data, error: fetchError }) => {
-        if (!active) return
-        if (fetchError) setError(fetchError.message)
-        else setRows((data ?? []) as BossRankRow[])
-        setLoading(false)
-      })
+
+    const refresh = () => {
+      supabase
+        .from('boss_player_ranking')
+        .select('*')
+        .eq('boss_id', boss.id)
+        .eq('variant', variantLabel)
+        .then(({ data, error: fetchError }) => {
+          if (!active) return
+          if (fetchError) setError(fetchError.message)
+          else {
+            setError(null)
+            setRows((data ?? []) as BossRankRow[])
+          }
+          setLoading(false)
+        })
+    }
+
+    refresh()
+    const interval = window.setInterval(refresh, 30_000)
     return () => {
       active = false
+      window.clearInterval(interval)
     }
   }, [boss.id, variantLabel])
 
@@ -63,7 +72,7 @@ export function BossRanking({ boss, username }: { boss: Boss; username: string }
         <div>
           <div className="content-kicker">Ranking bossa</div>
           <h1>{boss.name}</h1>
-          <p className="stats-subtitle">Wyniki graczy dla tego wariantu walki.</p>
+          <p className="stats-subtitle">Wyniki graczy dla tego wariantu walki. Odświeża się co 30 s.</p>
         </div>
         <div className="ranking-controls">
           <label>

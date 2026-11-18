@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-18T12:51:34.532Z",
+  "generatedAt": "2026-11-18T15:05:25.721Z",
   "source": {
     "name": "poewiki.net",
     "url": "https://www.poewiki.net/",
@@ -747,7 +747,6 @@
                   "chance": null,
                   "type": "gem",
                   "iconUrl": "https://www.poewiki.net/images/b/b6/Overheat_Support_inventory_icon.png",
-                  "note": "Overheat SupportOverheat SupportExceptional, Support, Melee, Attack Level: (1-3) Cost & Reservation Multiplier: 120%Requires Level (72-76), (114-120) StrSupports melee attack skills you use yourself. Cannot modify the skills of minions.Supported Skills consume all Fortification on use, dealing (6-8)% more Damage with Ailments per 3 Fortification consumed Additional Effects From 1-20% Quality: (0.5-10)% increased Duration of Ailments inflicted with Supported SkillsNo walls can stand against its gaze. No fortress, no cave, no mountain. Better to die fighting.This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
                   "children": []
                 },
                 {
@@ -877,7 +876,6 @@
                   "chance": null,
                   "type": "gem",
                   "iconUrl": "https://www.poewiki.net/images/b/b6/Overheat_Support_inventory_icon.png",
-                  "note": "Overheat SupportOverheat SupportExceptional, Support, Melee, Attack Level: (1-3) Cost & Reservation Multiplier: 120%Requires Level (72-76), (114-120) StrSupports melee attack skills you use yourself. Cannot modify the skills of minions.Supported Skills consume all Fortification on use, dealing (6-8)% more Damage with Ailments per 3 Fortification consumed Additional Effects From 1-20% Quality: (0.5-10)% increased Duration of Ailments inflicted with Supported SkillsNo walls can stand against its gaze. No fortress, no cave, no mountain. Better to die fighting.This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
                   "children": []
                 },
                 {
@@ -960,7 +958,7 @@
                   "chance": null,
                   "type": "unique",
                   "iconUrl": "https://www.poewiki.net/images/7/74/Melding_of_the_Flesh_inventory_icon.png",
-                  "note": "Melding of the FleshMelding of the Flesh Cobalt JewelLimited to: 1-(80-70)% to all Elemental Resistances Elemental Resistances are capped by your highest Maximum Elemental Resistance instead -(6-4)% to all maximum Elemental Resistances\"We awoke to a sudden jungle rupturing the valleys of our home. Grasping limbs coiled around us, into us. We sank into each other, then rose into the living sky. My family screams alongside me still.\"Place into an allocated Jewel Socket on the Passive Skill Tree. Right click to remove from the Socket. (2%)[5]",
+                  "note": "Melding of the Flesh (2%)[5]",
                   "children": []
                 }
               ]
@@ -981,7 +979,6 @@
                   "chance": null,
                   "type": "gem",
                   "iconUrl": "https://www.poewiki.net/images/5/51/Gluttony_Support_inventory_icon.png",
-                  "note": "Gluttony SupportGluttony SupportExceptional, Support, Projectile, Spell, Duration Level: (1-3) Cost & Reservation Multiplier: 140%Requires Level (72-76), (50-52) Dex, (72-75) IntSupports Projectile Spells you cast yourself. Cannot support orb skills, triggered skills, brand skills, Vaal skills, channelling skills, skills with a reservation, or skills used by things other than you.Gain 1 Gluttony on casting Supported Spells On reaching 10 Gluttony, lose all Gluttony and gain Disgorge for 4 seconds While you have Disgorge Supported Spells fire Projectiles in a circle While you have Disgorge Supported Spells fire (5-7) additional Projectiles Additional Effects From 1-20% Quality: Supported Skills deal (0.5-10)% increased Projectile DamageChampions of the Tangle are driven to seek sustenance for their master; should they fall behind, they would soon be consumed as well.This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
                   "children": []
                 },
                 {
@@ -1024,7 +1021,6 @@
                   "chance": null,
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
-                  "note": "Auspicious AmbitionsAuspicious Ambitions4Experimented Item Item Level: 100 Double-Influenced Item\"Gaze upon the mirrors of what may come and step backward into infinity.\" -Dexion, Thaumetic Aspirant",
                   "children": []
                 }
               ]
@@ -1105,7 +1101,6 @@
                   "chance": null,
                   "type": "gem",
                   "iconUrl": "https://www.poewiki.net/images/5/51/Gluttony_Support_inventory_icon.png",
-                  "note": "Gluttony SupportGluttony SupportExceptional, Support, Projectile, Spell, Duration Level: (1-3) Cost & Reservation Multiplier: 140%Requires Level (72-76), (50-52) Dex, (72-75) IntSupports Projectile Spells you cast yourself. Cannot support orb skills, triggered skills, brand skills, Vaal skills, channelling skills, skills with a reservation, or skills used by things other than you.Gain 1 Gluttony on casting Supported Spells On reaching 10 Gluttony, lose all Gluttony and gain Disgorge for 4 seconds While you have Disgorge Supported Spells fire Projectiles in a circle While you have Disgorge Supported Spells fire (5-7) additional Projectiles Additional Effects From 1-20% Quality: Supported Skills deal (0.5-10)% increased Projectile DamageChampions of the Tangle are driven to seek sustenance for their master; should they fall behind, they would soon be consumed as well.This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
                   "children": []
                 },
                 {
@@ -1148,7 +1143,6 @@
                   "chance": null,
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
-                  "note": "Auspicious AmbitionsAuspicious Ambitions4Experimented Item Item Level: 100 Double-Influenced Item\"Gaze upon the mirrors of what may come and step backward into infinity.\" -Dexion, Thaumetic Aspirant",
                   "children": []
                 }
               ]
@@ -1895,7 +1889,7 @@
       "variants": [
         {
           "id": "regular-dread",
-          "label": "Dread",
+          "label": "Regular Dread",
           "sourceUrl": "https://www.poewiki.net/wiki/Incarnation_of_Dread",
           "sections": [
             {
@@ -2083,7 +2077,7 @@
       "variants": [
         {
           "id": "regular-neglect",
-          "label": "Neglect",
+          "label": "Regular Neglect",
           "sourceUrl": "https://www.poewiki.net/wiki/Incarnation_of_Neglect",
           "sections": [
             {
@@ -2278,7 +2272,7 @@
       "variants": [
         {
           "id": "regular-fear",
-          "label": "Fear",
+          "label": "Regular Fear",
           "sourceUrl": "https://www.poewiki.net/wiki/Incarnation_of_Fear",
           "sections": [
             {
