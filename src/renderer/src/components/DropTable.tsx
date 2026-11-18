@@ -4,6 +4,7 @@ import type { Boss, DropRow, DropSection } from '../../../../shared/schema'
 type Props = {
   boss: Boss
   onOpenSource: (url: string) => void
+  onSimulate?: () => void
 }
 
 type TypeFilter = 'all' | 'unique' | 'gem' | 'currency' | 'other'
@@ -68,7 +69,7 @@ function SectionCell({
   )
 }
 
-export function DropTable({ boss, onOpenSource }: Props) {
+export function DropTable({ boss, onOpenSource, onSimulate }: Props) {
   const [typeFilter, setTypeFilter] = useState<TypeFilter>('all')
   const [query, setQuery] = useState('')
 
@@ -91,15 +92,22 @@ export function DropTable({ boss, onOpenSource }: Props) {
           <div className="content-kicker">{boss.category} boss</div>
           <h1>{boss.name}</h1>
         </div>
-        {boss.variants[0]?.sourceUrl && (
-          <button
-            type="button"
-            className="source-link"
-            onClick={() => onOpenSource(boss.variants[0].sourceUrl)}
-          >
-            Otwórz na poewiki ↗
-          </button>
-        )}
+        <div className="content-actions">
+          {onSimulate && (
+            <button type="button" className="simulate-button" onClick={onSimulate}>
+              Symuluj walkę
+            </button>
+          )}
+          {boss.variants[0]?.sourceUrl && (
+            <button
+              type="button"
+              className="source-link"
+              onClick={() => onOpenSource(boss.variants[0].sourceUrl)}
+            >
+              Otwórz na poewiki ↗
+            </button>
+          )}
+        </div>
       </header>
 
       <div className="toolbar">

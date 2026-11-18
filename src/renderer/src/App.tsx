@@ -6,6 +6,7 @@ import {
   type DropData,
   type PriceData
 } from '../../../shared/schema'
+import type { MechanicsData } from '../../../shared/mechanics'
 import { BossSidebar } from './components/BossSidebar'
 import { DropTable } from './components/DropTable'
 import { DropLog } from './components/DropLog'
@@ -13,6 +14,7 @@ import { UsernamePrompt } from './components/UsernamePrompt'
 import { RealStats } from './components/RealStats'
 import { RankingBoard } from './components/RankingBoard'
 import { BossRanking } from './components/BossRanking'
+import { BossSimulator } from './components/BossSimulator'
 
 const DATA_URL = `${import.meta.env.BASE_URL}drops.json`
 const USERNAME_KEY = 'poe-boss-scrapper.username'
@@ -22,6 +24,7 @@ type Tab = 'table' | 'log' | 'stats' | 'ranking'
 type LoadResult = {
   data: DropData
   prices: PriceData | null
+  mechanics: MechanicsData | null
   updatedAt: string
   error?: string
 }
@@ -42,9 +45,10 @@ function readUsername(): string | null {
 }
 
 async function fetchDropData(): Promise<LoadResult> {
-  const [response, pricesResponse] = await Promise.all([
+  const [response, pricesResponse, mechanicsResponse] = await Promise.all([
     fetch(DATA_URL, { cache: 'no-cache' }),
-    fetch(`${import.meta.env.BASE_URL}prices.json`, { cache: 'no-cache' })
+    fetch(`${import.meta.env.BASE_URL}prices.json`, { cache: 'no-cache' }),
+    fetch(`${import.meta.env.BASE_URL}boss-mechanics.json`, { cache: 'no-cache' })
   ])
   if (!response.ok) throw new Error(`HTTP ${response.status}`)
   const parsed = dropDataSchema.safeParse(await response.json())
@@ -56,7 +60,13 @@ async function fetchDropData(): Promise<LoadResult> {
     if (parsedPrices.success) prices = parsedPrices.data
   }
 
-  return { data: parsed.data, prices, updatedAt: parsed.data.generatedAt }
+  let mechanics: MechanicsData | null = null
+  if (mechanicsResponse.ok) {
+    const parsedMechanics = (await mechanicsResponse.json()) as MechanicsData
+    if (parsedMechanics?.schemaVersion >= 1 && parsedMechanics.bosses) mechanics = parsedMechanics
+  }
+
+  return { data: parsed.data, prices, mechanics, updatedAt: parsed.data.generatedAt }
 }
 
 export default function App() {
@@ -69,6 +79,7 @@ export default function App() {
   const [username, setUsername] = useState<string | null>(readUsername)
   const [usernamePromptOpen, setUsernamePromptOpen] = useState(() => readUsername() === null)
   const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth > 760)
+  const [simulatorOpen, setSimulatorOpen] = useState(false)
 
   function closeSidebarOnMobile() {
     if (window.innerWidth <= 760) setSidebarOpen(false)
@@ -215,6 +226,7 @@ export default function App() {
             <DropTable
               boss={selectedEntry.displayBoss}
               onOpenSource={(url) => window.open(url, '_blank', 'noopener,noreferrer')}
+              onSimulate={result?.mechanics?.bosses[selectedEntry.displayBoss.id] ? () => setSimulatorOpen(true) : undefined}
             />
           ) : tab === 'log' ? (
             <DropLog
@@ -259,6 +271,15 @@ export default function App() {
 
       {usernamePromptOpen && (
         <UsernamePrompt initial={username ?? undefined} onSave={saveUsername} />
+      )}
+
+      {simulatorOpen && result?.mechanics && selectedEntry && (
+        <BossSimulator
+          bossId={selectedEntry.displayBoss.id}
+          boss={selectedEntry.displayBoss}
+          mechanics={result.mechanics.bosses[selectedEntry.displayBoss.id]}
+          onClose={() => setSimulatorOpen(false)}
+        />
       )}
     </div>
   )

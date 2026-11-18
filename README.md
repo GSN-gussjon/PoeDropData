@@ -71,6 +71,24 @@ is kept in `localStorage` and sent as `x-owner-token`; the RLS delete policy in
 `supabase/migrations/0003_owner_delete.sql` checks it. Deletion asks for confirmation
 inline before removing the row.
 
+The boss view has a **Symuluj walkę** button for bosses with mechanics data
+(`public/boss-mechanics.json`, currently The Maven). It opens a fullscreen 2D canvas
+fight simulator: click to move, automatic attack, configurable DPS/HP/regen, the
+boss's real base HP, all **7 phases** (four Maven, three Nucleus), telegraphed attacks
+with voice lines from the wiki, and a reward screen rolling from `drops.json`. The
+„Stand still!" (Tri-Beam Claws) attack uses a dedicated controller (`sim/triBeam.ts`):
+six thin threads in two groups of three anchored at Maven's hands: the right group
+rotates left, the left group rotates right, they cross in the middle and keep rotating
+until their tips reach the arena edge and vanish. Independent of the player, with
+swept collision and separate
+preparation/telegraph/active phases. Its geometry, speed and damage are configurable
+in `public/boss-mechanics.json` under `triBeam`. The
+Nucleus phases have permanent rotating Brain Beams; the final phase has five rotating
+beams with moving gaps. The Memory Game uses a 3-zone pattern in phase 3 and 6-zone
+patterns later, with a slowly expanding blast that punishes wrong steps. Results stay
+in `localStorage` only — nothing is written to Supabase. Mechanics data comes from
+poewiki.net, poedb.tw and the Maxroll boss guide (CC BY-NC-SA 3.0).
+
 Drop tiles show current prices from poe.ninja, refreshed by the same scraper into
 `public/prices.json` (the API has no CORS support, so the browser cannot call it
 directly). The current challenge league is detected automatically. When poe.ninja
