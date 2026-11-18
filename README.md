@@ -70,6 +70,12 @@ is kept in `localStorage` and sent as `x-owner-token`; the RLS delete policy in
 `supabase/migrations/0003_owner_delete.sql` checks it. Deletion asks for confirmation
 inline before removing the row.
 
+Drop tiles show current prices from poe.ninja, refreshed by the same scraper into
+`public/prices.json` (the API has no CORS support, so the browser cannot call it
+directly). The current challenge league is detected automatically. When poe.ninja
+provides several variants, the price prefers an uncorrupted/unidentified entry and
+otherwise uses the most-listed one.
+
 Statistics use the views in `supabase/migrations/0002_fights_and_stats.sql`:
 `item_stats` counts fights in which an item dropped, `boss_fight_stats` counts all
 fights for a boss variant. Chance = fights with item / all fights.

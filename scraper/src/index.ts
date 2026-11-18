@@ -4,6 +4,7 @@ import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { BOSS_TARGETS, wikiUrl, type BossTarget } from './bosses'
 import { buildBossFromTable, type ExtractedTable } from './parse'
+import { refreshPrices } from './prices'
 import { dropDataSchema, type Boss, type DropData } from '../../shared/schema'
 
 const OUTPUT = resolve(process.cwd(), 'public', 'drops.json')
@@ -121,6 +122,9 @@ async function main(): Promise<void> {
   await mkdir(resolve(process.cwd(), 'public'), { recursive: true })
   await writeFile(OUTPUT, `${JSON.stringify(validated, null, 2)}\n`, 'utf8')
   process.stdout.write(`\nZapisano ${OUTPUT} (zaktualizowano ${updated} bossów).\n`)
+
+  process.stdout.write('\nPobieranie cen z poe.ninja...\n')
+  await refreshPrices(OUTPUT, resolve(process.cwd(), 'public', 'prices.json'))
 }
 
 main().catch((error) => {

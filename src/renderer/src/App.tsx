@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { dropDataSchema, type Boss, type DropData } from '../../../shared/schema'
+import {
+  dropDataSchema,
+  priceDataSchema,
+  type Boss,
+  type DropData,
+  type PriceData
+} from '../../../shared/schema'
 import { BossSidebar } from './components/BossSidebar'
 import { DropTable } from './components/DropTable'
 import { DropLog } from './components/DropLog'
@@ -12,6 +18,7 @@ const USERNAME_KEY = 'poe-boss-scrapper.username'
 type Tab = 'table' | 'log' | 'stats'
 type LoadResult = {
   data: DropData
+  prices: PriceData | null
   updatedAt: string
   error?: string
 }
@@ -32,11 +39,21 @@ function readUsername(): string | null {
 }
 
 async function fetchDropData(): Promise<LoadResult> {
-  const response = await fetch(DATA_URL, { cache: 'no-cache' })
+  const [response, pricesResponse] = await Promise.all([
+    fetch(DATA_URL, { cache: 'no-cache' }),
+    fetch(`${import.meta.env.BASE_URL}prices.json`, { cache: 'no-cache' })
+  ])
   if (!response.ok) throw new Error(`HTTP ${response.status}`)
   const parsed = dropDataSchema.safeParse(await response.json())
   if (!parsed.success) throw new Error('Nieprawidłowy format danych')
-  return { data: parsed.data, updatedAt: parsed.data.generatedAt }
+
+  let prices: PriceData | null = null
+  if (pricesResponse.ok) {
+    const parsedPrices = priceDataSchema.safeParse(await pricesResponse.json())
+    if (parsedPrices.success) prices = parsedPrices.data
+  }
+
+  return { data: parsed.data, prices, updatedAt: parsed.data.generatedAt }
 }
 
 export default function App() {
@@ -159,6 +176,7 @@ export default function App() {
           ) : tab === 'log' ? (
             <DropLog
               boss={selectedEntry.displayBoss}
+              prices={result?.prices ?? null}
               username={username ?? 'Anonim'}
               onChangeUsername={() => setUsernamePromptOpen(true)}
             />

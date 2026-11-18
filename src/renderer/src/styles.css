@@ -285,6 +285,7 @@ button, input { font: inherit; }
 .tile-variant { font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
 .tile-variant.uber { color: #d98a6a; }
 .tile-type { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.tile-price { font-size: 11px; font-weight: 700; color: #9fd97f; background: rgba(159,217,127,0.08); border-radius: 8px; padding: 1px 7px; }
 
 .drop-log-summary { display: flex; align-items: center; gap: 16px; margin: 24px 0 8px; padding: 14px 18px; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 5px; }
 .summary-number { font-size: 32px; font-weight: 700; color: var(--accent); line-height: 1; }

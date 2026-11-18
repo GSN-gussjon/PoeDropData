@@ -61,6 +61,23 @@ export const dropDataSchema = z.object({
   bosses: z.array(bossSchema)
 })
 
+export const priceEntrySchema = z.object({
+  chaos: z.number(),
+  divine: z.number().nullable(),
+  variant: z.string().nullable(),
+  source: z.string()
+})
+
+export const priceDataSchema = z.object({
+  schemaVersion: z.literal(1),
+  generatedAt: z.string(),
+  league: z.string(),
+  source: z.object({ name: z.string(), url: z.string() }),
+  prices: z.record(priceEntrySchema)
+})
+
+export type PriceData = z.infer<typeof priceDataSchema>
+export type PriceEntry = z.infer<typeof priceEntrySchema>
 export type DropSection = z.infer<typeof dropSectionSchema>
 export type BossVariant = z.infer<typeof bossVariantSchema>
 export type Boss = z.infer<typeof bossSchema>

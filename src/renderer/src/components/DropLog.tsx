@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { Boss, DropRow } from '../../../../shared/schema'
+import type { Boss, DropRow, PriceData } from '../../../../shared/schema'
+import { normalizeItemName } from '../../../../shared/normalize'
 import { ownerToken, supabase } from '../supabase'
 
 type DropEntry = {
@@ -80,12 +81,20 @@ function collectTiles(boss: Boss): Tile[] {
   return tiles
 }
 
+function formatPrice(chaos: number): string {
+  if (chaos >= 1000) return `${(chaos / 1000).toFixed(chaos >= 10000 ? 0 : 1)}k c`
+  if (chaos >= 10) return `${chaos.toFixed(0)}c`
+  return `${Number(chaos.toFixed(2))}c`
+}
+
 export function DropLog({
   boss,
+  prices,
   username,
   onChangeUsername
 }: {
   boss: Boss
+  prices: PriceData | null
   username: string
   onChangeUsername: () => void
 }) {
@@ -288,6 +297,22 @@ export function DropLog({
                 <span className={`tile-variant ${tile.variant.toLowerCase().includes('uber') ? 'uber' : ''}`}>
                   {tile.variant}
                 </span>
+                {(() => {
+                  const price = prices?.prices[normalizeItemName(tile.name)]
+                  if (!price) return null
+                  return (
+                    <span
+                      className="tile-price"
+                      title={
+                        price.divine && price.divine >= 0.01
+                          ? `${price.divine.toFixed(2)} div · ${price.source} · ${prices?.league}`
+                          : `${price.source} · ${prices?.league}`
+                      }
+                    >
+                      {formatPrice(price.chaos)}
+                    </span>
+                  )
+                })()}
               </button>
             )
           })}
