@@ -1,0 +1,34 @@
+{
+  "name": "poe-boss-scrapper",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Web app showing current Path of Exile boss drop tables (GitHub Pages)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "scrape": "tsx scraper/src/index.ts",
+    "scrape:maven": "tsx scraper/src/index.ts --boss the-maven",
+    "db:migrate": "node supabase/apply-migration.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.49.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "playwright": "^1.49.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  }
+}

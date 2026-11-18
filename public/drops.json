@@ -1,0 +1,1817 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-18T11:20:39.601Z",
+  "source": {
+    "name": "poewiki.net",
+    "url": "https://www.poewiki.net/",
+    "license": "CC BY-NC-SA 3.0"
+  },
+  "bosses": [
+    {
+      "id": "the-maven",
+      "name": "The Maven",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "maven",
+          "label": "Maven",
+          "sourceUrl": "https://www.poewiki.net/wiki/The_Maven",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Legacy of Fury",
+                  "chance": "41%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/e/e5/Legacy_of_Fury_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Graven's Secret",
+                  "chance": "17%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/5/5e/Graven%27s_Secret_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Arn's Anguish",
+                  "chance": "17%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/7/7e/Arn%27s_Anguish_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Olesya's Delight",
+                  "chance": "17%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/ac/Olesya%27s_Delight_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Doppelgänger Guise",
+                  "chance": "7%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/e/e7/Doppelg%C3%A4nger_Guise_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Echoforge",
+                  "chance": "1%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/c/c6/Echoforge_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Ceremonial Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c9/Ceremonial_Voidstone_inventory_icon.png",
+                  "note": "Quest Item, drops on first kill",
+                  "children": []
+                },
+                {
+                  "name": "Invert the Rules Support",
+                  "chance": "10%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/2/27/Invert_the_Rules_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Conflict",
+                  "chance": "32%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/ce/Orb_of_Conflict_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Auspicious Ambitions",
+                  "chance": "<0.05%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-maven",
+          "label": "Uber Maven",
+          "sourceUrl": "https://www.poewiki.net/wiki/The_Maven",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Viridi's Veil",
+                  "chance": "52%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/1/10/Viridi%27s_Veil_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Impossible Escape",
+                  "chance": "31.5%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/e/eb/Impossible_Escape_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Grace of the Goddess",
+                  "chance": "14%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/9/9e/Grace_of_the_Goddess_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Progenesis",
+                  "chance": "2.5%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/8/89/Progenesis_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Encounter-specific drops",
+              "rows": [
+                {
+                  "name": "Awakened exceptional support gem",
+                  "chance": "~2% total",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/2/23/Awakened_Empower_Support_inventory_icon.png",
+                  "children": [
+                    {
+                      "name": "Awakened Empower Support",
+                      "chance": "~0.6%",
+                      "type": "gem",
+                      "iconUrl": "https://www.poewiki.net/images/2/23/Awakened_Empower_Support_inventory_icon.png",
+                      "children": []
+                    },
+                    {
+                      "name": "Awakened Enhance Support",
+                      "chance": "1%",
+                      "type": "gem",
+                      "iconUrl": "https://www.poewiki.net/images/3/32/Awakened_Enhance_Support_inventory_icon.png",
+                      "children": []
+                    },
+                    {
+                      "name": "Awakened Enlighten Support",
+                      "chance": "0.5%",
+                      "type": "gem",
+                      "iconUrl": "https://www.poewiki.net/images/0/0e/Awakened_Enlighten_Support_inventory_icon.png",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Eclipse Support",
+                  "chance": "2%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/0/0f/Eclipse_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Shiny Reliquary Key",
+                  "chance": "~0.7%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/7/71/Shiny_Reliquary_Key_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Curio of Potential",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/f/f9/Primordial_Fragment_%283_of_4%29_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Ceremonial Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c9/Ceremonial_Voidstone_inventory_icon.png",
+                  "note": "Quest Item, drops on first kill",
+                  "children": []
+                },
+                {
+                  "name": "Invert the Rules Support",
+                  "chance": "10%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/2/27/Invert_the_Rules_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Conflict",
+                  "chance": "32%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/ce/Orb_of_Conflict_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Auspicious Ambitions",
+                  "chance": "<0.05%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-shaper",
+      "name": "The Shaper",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "shaper",
+          "label": "Shaper",
+          "sourceUrl": "https://www.poewiki.net/wiki/The_Shaper",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Shaper's Touch",
+                  "chance": "56%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/65/Shaper%27s_Touch_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Voidwalker",
+                  "chance": "30%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/4/4f/Voidwalker_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Solstice Vigil",
+                  "chance": "11%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/8/8c/Solstice_Vigil_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Dying Sun",
+                  "chance": "~3%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/d/df/Dying_Sun_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Voidstorm Support",
+                  "chance": "10%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/c/cf/Voidstorm_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Shaper's Exalted Orb",
+                  "chance": "13%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/a/ac/Shaper%27s_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Dominance",
+                  "chance": "3%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c2/Orb_of_Dominance_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Decayed Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/3/32/Decayed_Voidstone_inventory_icon.png",
+                  "note": "Quest item",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-shaper",
+          "label": "Uber Shaper",
+          "sourceUrl": "https://www.poewiki.net/wiki/The_Shaper",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Echoes of Creation",
+                  "chance": "32%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/62/Echoes_of_Creation_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Entropic Devastation",
+                  "chance": "31%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/c/c0/Entropic_Devastation_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Unblinking Eye",
+                  "chance": "19%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/b/b4/The_Unblinking_Eye_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Tides of Time",
+                  "chance": "16%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/2/2f/The_Tides_of_Time_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Starforge",
+                  "chance": "2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/0/03/Starforge_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Encounter-specific drops",
+              "rows": [
+                {
+                  "name": "Sublime Vision",
+                  "chance": "~2%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/e/eb/Sublime_Vision_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Cosmic Reliquary Key",
+                  "chance": "~1%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/d/d1/Cosmic_Reliquary_Key_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Voidstorm Support",
+                  "chance": "10%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/c/cf/Voidstorm_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Shaper's Exalted Orb",
+                  "chance": "13%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/a/ac/Shaper%27s_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Dominance",
+                  "chance": "3%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c2/Orb_of_Dominance_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Decayed Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/3/32/Decayed_Voidstone_inventory_icon.png",
+                  "note": "Quest item",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-elder",
+      "name": "The Elder",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "elder",
+          "label": "Elder",
+          "sourceUrl": "https://www.poewiki.net/wiki/The_Elder",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Cyclopean Coil",
+                  "chance": "30%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/4/48/Cyclopean_Coil_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Blasphemer's Grasp",
+                  "chance": "26%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/d/dd/Blasphemer%27s_Grasp_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Impresence",
+                  "chance": null,
+                  "type": "unique",
+                  "note": "Impresence (Any) (20%):",
+                  "children": []
+                },
+                {
+                  "name": "Hopeshredder",
+                  "chance": "8%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/a5/Hopeshredder_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Nebuloch",
+                  "chance": "8%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/9/9a/Nebuloch_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Shimmeron",
+                  "chance": "8%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/c/cd/Shimmeron_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Watcher's Eye",
+                  "chance": "40%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/63/Watcher%27s_Eye_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Elder's Exalted Orb",
+                  "chance": "12%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/0/04/Elder%27s_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Blasphemy Support",
+                  "chance": "~10%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/3/36/Eldritch_Blasphemy_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Dominance",
+                  "chance": "~2%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c2/Orb_of_Dominance_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Void of the Elements",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "note": "≤0.5%",
+                  "children": []
+                },
+                {
+                  "name": "Decayed Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/3/32/Decayed_Voidstone_inventory_icon.png",
+                  "note": "Quest item",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sirus",
+      "name": "Sirus, Awakener of Worlds",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "sirus",
+          "label": "Sirus",
+          "sourceUrl": "https://www.poewiki.net/wiki/Sirus,_Awakener_of_Worlds",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Hands of the High Templar",
+                  "chance": "43%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/8/8f/Hands_of_the_High_Templar_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Crown of the Inward Eye",
+                  "chance": "32%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/a2/Crown_of_the_Inward_Eye_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Burden of Truth",
+                  "chance": "20%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/8/81/The_Burden_of_Truth_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Thread of Hope",
+                  "chance": "5%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/9/94/Thread_of_Hope_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Annihilation Support",
+                  "chance": "7%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/0/0a/Annihilation_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Dominance",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c2/Orb_of_Dominance_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Awakener's Orb",
+                  "chance": "20%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c0/Awakener%27s_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "A Fate Worse Than Death",
+                  "chance": "4%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-sirus",
+          "label": "Uber Sirus",
+          "sourceUrl": "https://www.poewiki.net/wiki/Sirus,_Awakener_of_Worlds",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Thread of Hope",
+                  "chance": "44%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/9/94/Thread_of_Hope_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Tempest Rising",
+                  "chance": "28%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/1/1a/The_Tempest_Rising_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Zana's Ingenuity",
+                  "chance": "18%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/2/25/Zana%27s_Ingenuity_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Oriath's End",
+                  "chance": "9%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/ae/Oriath%27s_End_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Saviour",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/3/34/The_Saviour_inventory_icon.png",
+                  "note": "≤1%",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Encounter-specific drops",
+              "rows": [
+                {
+                  "name": "Oubliette Reliquary Key",
+                  "chance": "~1.5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/8/87/Oubliette_Reliquary_Key_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Annihilation Support",
+                  "chance": "7%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/0/0a/Annihilation_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Dominance",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c2/Orb_of_Dominance_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Awakener's Orb",
+                  "chance": "20%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c0/Awakener%27s_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "A Fate Worse Than Death",
+                  "chance": "4%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-searing-exarch",
+      "name": "The Searing Exarch",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "exarch",
+          "label": "Exarch",
+          "sourceUrl": "https://www.poewiki.net/wiki/The_Searing_Exarch",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Dawnbreaker",
+                  "chance": "63%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/f/fa/Dawnbreaker_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Dawnstrider",
+                  "chance": "35%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/4/40/Dawnstrider_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Dissolution of the Flesh",
+                  "chance": "2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/c/c8/Dissolution_of_the_Flesh_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Eldritch Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/f/fd/Eldritch_Voidstone_inventory_icon.png",
+                  "note": "Quest Item, drops on first kill if Eater already defeated",
+                  "children": []
+                },
+                {
+                  "name": "Overheat Support",
+                  "chance": null,
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/b/b6/Overheat_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Forbidden Flame",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/6/6d/Forbidden_Flame_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Exceptional Eldritch Ember",
+                  "chance": "15%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/c/cb/Exceptional_Eldritch_Ember_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Orb of Annulment",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/2/23/Eldritch_Orb_of_Annulment_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Chaos Orb",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/d/d2/Eldritch_Chaos_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Exalted Orb",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/0/01/Eldritch_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Auspicious Ambitions",
+                  "chance": "<1%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-exarch",
+          "label": "Uber Exarch",
+          "sourceUrl": "https://www.poewiki.net/wiki/The_Searing_Exarch",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "The Annihilating Light",
+                  "chance": "45.5%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/a3/The_Annihilating_Light_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Annihilation's Approach",
+                  "chance": "29%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/b/bc/Annihilation%27s_Approach_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Crystallised Omniscience",
+                  "chance": "24%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/9/9b/Crystallised_Omniscience_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Celestial Brace",
+                  "chance": "1.5%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/7/7a/The_Celestial_Brace_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Encounter-specific drops",
+              "rows": [
+                {
+                  "name": "Forbidden Flame",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/6/6d/Forbidden_Flame_inventory_icon.png",
+                  "note": "Hidden Ascendancy Notable variant",
+                  "children": []
+                },
+                {
+                  "name": "Archive Reliquary Key",
+                  "chance": "1.5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/2/29/Archive_Reliquary_Key_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Curio of Absorption",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/d/d4/Primordial_Fragment_%281_of_4%29_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Eldritch Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/f/fd/Eldritch_Voidstone_inventory_icon.png",
+                  "note": "Quest Item, drops on first kill if Eater already defeated",
+                  "children": []
+                },
+                {
+                  "name": "Overheat Support",
+                  "chance": null,
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/b/b6/Overheat_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Forbidden Flame",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/6/6d/Forbidden_Flame_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Exceptional Eldritch Ember",
+                  "chance": "15%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/c/cb/Exceptional_Eldritch_Ember_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Orb of Annulment",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/2/23/Eldritch_Orb_of_Annulment_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Chaos Orb",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/d/d2/Eldritch_Chaos_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Exalted Orb",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/0/01/Eldritch_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Auspicious Ambitions",
+                  "chance": "<1%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-eater-of-worlds",
+      "name": "The Eater of Worlds",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "eater",
+          "label": "Eater",
+          "sourceUrl": "https://www.poewiki.net/wiki/The_Eater_of_Worlds",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Inextricable Fate",
+                  "chance": "55%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/5/5c/Inextricable_Fate_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Gluttonous Tide",
+                  "chance": "43%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/7/78/The_Gluttonous_Tide_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Melding of the Flesh",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/7/74/Melding_of_the_Flesh_inventory_icon.png",
+                  "note": "Melding of the Flesh (2%)[5]",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops (Affected by map quant)",
+              "rows": [
+                {
+                  "name": "Eldritch Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/f/fd/Eldritch_Voidstone_inventory_icon.png",
+                  "note": "Quest Item, drops on first kill if Exarch already defeated",
+                  "children": []
+                },
+                {
+                  "name": "Gluttony Support",
+                  "chance": null,
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/5/51/Gluttony_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Forbidden Flesh",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/e/ed/Forbidden_Flesh_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Exceptional Eldritch Ichor",
+                  "chance": "15%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/8/81/Exceptional_Eldritch_Ichor_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Orb of Annulment",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/2/23/Eldritch_Orb_of_Annulment_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Chaos Orb",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/d/d2/Eldritch_Chaos_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Exalted Orb",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/0/01/Eldritch_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Auspicious Ambitions",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-eater",
+          "label": "Uber Eater",
+          "sourceUrl": "https://www.poewiki.net/wiki/The_Eater_of_Worlds",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Ravenous Passion",
+                  "chance": "68%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/5/54/Ravenous_Passion_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Ashes of the Stars",
+                  "chance": "30%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/4/4e/Ashes_of_the_Stars_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Nimis",
+                  "chance": "~2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/4/4e/Nimis_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Encounter-specific drops",
+              "rows": [
+                {
+                  "name": "Forbidden Flesh",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/e/ed/Forbidden_Flesh_inventory_icon.png",
+                  "note": "Hidden Ascendancy Notable variant",
+                  "children": []
+                },
+                {
+                  "name": "Visceral Reliquary Key",
+                  "chance": "1%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/1/11/Visceral_Reliquary_Key_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Curio of Consumption",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c4/Primordial_Fragment_%282_of_4%29_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops (Affected by map quant)",
+              "rows": [
+                {
+                  "name": "Eldritch Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/f/fd/Eldritch_Voidstone_inventory_icon.png",
+                  "note": "Quest Item, drops on first kill if Exarch already defeated",
+                  "children": []
+                },
+                {
+                  "name": "Gluttony Support",
+                  "chance": null,
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/5/51/Gluttony_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Forbidden Flesh",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/e/ed/Forbidden_Flesh_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Exceptional Eldritch Ichor",
+                  "chance": "15%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/8/81/Exceptional_Eldritch_Ichor_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Orb of Annulment",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/2/23/Eldritch_Orb_of_Annulment_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Chaos Orb",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/d/d2/Eldritch_Chaos_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Eldritch Exalted Orb",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/0/01/Eldritch_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Auspicious Ambitions",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "atziri",
+      "name": "Atziri",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "atziri",
+          "label": "Atziri",
+          "sourceUrl": "https://www.poewiki.net/wiki/Atziri",
+          "sections": [
+            {
+              "title": "Drops",
+              "rows": [
+                {
+                  "name": "Atziri's Promise",
+                  "chance": "48%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/1/13/Atziri%27s_Promise_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Triumvirate Authority",
+                  "chance": "18%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/2/22/Triumvirate_Authority_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Atziri's Step",
+                  "chance": "15%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/3/35/Atziri%27s_Step_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Doryani's Invitation",
+                  "chance": "15%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/3/34/Doryani%27s_Invitation_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Doryani's Catalyst",
+                  "chance": "3%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/7/77/Doryani%27s_Catalyst_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Pledge of Hands",
+                  "chance": "~0.5%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/b/bb/Pledge_of_Hands_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Sacrificial Garb",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/7/7b/Sacrificial_Garb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Royal Visage",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/a/a0/Mortal_Set_inventory_icon.png",
+                  "note": "Area level 81+",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-atziri",
+          "label": "Uber Atziri",
+          "sourceUrl": "https://www.poewiki.net/wiki/Atziri",
+          "sections": [
+            {
+              "title": "Drops",
+              "rows": [
+                {
+                  "name": "Atziri's Splendour",
+                  "chance": "42%",
+                  "type": "other",
+                  "children": []
+                },
+                {
+                  "name": "The Vertex",
+                  "chance": "40%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/d/d6/The_Vertex_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Atziri's Acuity",
+                  "chance": "6%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/b/bc/Atziri%27s_Acuity_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Triumvirate Authority",
+                  "chance": "5%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/2/22/Triumvirate_Authority_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Atziri's Reflection",
+                  "chance": "4%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/5/50/Atziri%27s_Reflection_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Atziri's Disfavour",
+                  "chance": "2%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/d/da/Atziri%27s_Disfavour_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Atziri's Rule",
+                  "chance": "1%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/a/a8/Atziri%27s_Rule_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Soul Core of Instability",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/0/08/Soul_Core_of_Instability_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Soul Core of Intellect",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/3/31/Soul_Core_of_Intellect_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Soul Core of Might",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/a/a3/Soul_Core_of_Might_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Soul Core of Finesse",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/e/ec/Soul_Core_of_Finesse_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Sacrificial Garb",
+                  "chance": "~15%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/7/7b/Sacrificial_Garb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Beauty",
+                  "chance": "~15%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/4/4f/Vaal_Aspect_%281_of_4%29_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Vaal Sacrifice Support",
+                  "chance": "8%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/1/1b/Vaal_Sacrifice_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Greater Spell Echo Support",
+                  "chance": "5%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/4/47/Greater_Spell_Echo_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Triskaidekaphobia",
+                  "chance": "20%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Price of Devotion",
+                  "chance": "<0.1%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uber-elder",
+      "name": "Uber Elder",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "uber-elder",
+          "label": "Uber Elder",
+          "sourceUrl": "https://www.poewiki.net/wiki/Uber_Elder",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Mark of the Shaper",
+                  "chance": "35%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/b/b8/Mark_of_the_Shaper_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Mark of the Elder",
+                  "chance": "35%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/aa/Mark_of_the_Elder_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Voidfletcher",
+                  "chance": "~20%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/7/7d/Voidfletcher_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Indigon",
+                  "chance": "~8%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/c/cb/Indigon_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Disintegrator",
+                  "chance": "~2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/e/ed/Disintegrator_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Void Shockwave Support",
+                  "chance": "10%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/b/bc/Void_Shockwave_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Watcher's Eye",
+                  "chance": "35%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/63/Watcher%27s_Eye_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Shaper's Exalted Orb",
+                  "chance": "13%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/a/ac/Shaper%27s_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Elder's Exalted Orb",
+                  "chance": "13%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/0/04/Elder%27s_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Dominance",
+                  "chance": "6%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c2/Orb_of_Dominance_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Void of the Elements",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "note": "≤1%",
+                  "children": []
+                },
+                {
+                  "name": "Auspicious Ambitions",
+                  "chance": "<0.5%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Decayed Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/3/32/Decayed_Voidstone_inventory_icon.png",
+                  "note": "Quest item, drops on first kill",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-uber-elder",
+          "label": "Uber Uber Elder",
+          "sourceUrl": "https://www.poewiki.net/wiki/Uber_Elder",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Call of the Void",
+                  "chance": "46%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/61/Call_of_the_Void_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Devourer of Minds",
+                  "chance": "28.5%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/e/e0/The_Devourer_of_Minds_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Impresence",
+                  "chance": "10%",
+                  "type": "unique",
+                  "children": []
+                },
+                {
+                  "name": "Soul Ascension",
+                  "chance": "9%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/d/dc/Soul_Ascension_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Eternity Shroud",
+                  "chance": "5%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/a0/The_Eternity_Shroud_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Voidforge",
+                  "chance": "~1.5%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/0/03/Starforge_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Encounter-specific drops",
+              "rows": [
+                {
+                  "name": "Sublime Vision",
+                  "chance": "~1.5%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/e/eb/Sublime_Vision_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Decaying Reliquary Key",
+                  "chance": "~1.5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/f/ff/Decaying_Reliquary_Key_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Curio of Decay",
+                  "chance": "5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/7/7f/Primordial_Fragment_%284_of_4%29_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Void Shockwave Support",
+                  "chance": "10%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/b/bc/Void_Shockwave_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Watcher's Eye",
+                  "chance": "35%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/63/Watcher%27s_Eye_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Shaper's Exalted Orb",
+                  "chance": "13%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/a/ac/Shaper%27s_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Elder's Exalted Orb",
+                  "chance": "13%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/0/04/Elder%27s_Exalted_Orb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Dominance",
+                  "chance": "6%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c2/Orb_of_Dominance_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Void of the Elements",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "note": "≤1%",
+                  "children": []
+                },
+                {
+                  "name": "Auspicious Ambitions",
+                  "chance": "<0.5%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Decayed Voidstone",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/3/32/Decayed_Voidstone_inventory_icon.png",
+                  "note": "Quest item, drops on first kill",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aul",
+      "name": "Aul, the Crystal King",
+      "category": "Delve",
+      "variants": [
+        {
+          "id": "aul-the-crystal-king",
+          "label": "Aul, the Crystal King",
+          "sourceUrl": "https://www.poewiki.net/wiki/Aul,_the_Crystal_King",
+          "sections": [
+            {
+              "title": "Item drops",
+              "rows": [
+                {
+                  "name": "Ahkeli's Meadow",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/1/1b/Ahkeli%27s_Meadow_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Aul's Uprising",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/ae/Aul%27s_Uprising_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Crown of the Tyrant",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/3/3b/Crown_of_the_Tyrant_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Desecrated Virtue",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Luminous Trove",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Putembo's Mountain",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/e/ec/Putembo%27s_Mountain_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Uzaza's Valley",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/7/7d/Uzaza%27s_Valley_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kurgal",
+      "name": "Kurgal, the Blackblooded",
+      "category": "Delve",
+      "variants": [
+        {
+          "id": "kurgal-the-blackblooded",
+          "label": "Kurgal, the Blackblooded",
+          "sourceUrl": "https://www.poewiki.net/wiki/Kurgal,_the_Blackblooded",
+          "sections": [
+            {
+              "title": "Item drops",
+              "rows": [
+                {
+                  "name": "Ahkeli's Valley",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/d/d2/Ahkeli%27s_Valley_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Command of the Pit",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/3/3a/Command_of_the_Pit_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Hale Negator",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/4/49/Hale_Negator_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Putembo's Meadow",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/1/1c/Putembo%27s_Meadow_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Uzaza's Mountain",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/f/f9/Uzaza%27s_Mountain_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Misery in Darkness",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Zorath's Eye of the Inevitable",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/3/33/Zorath%27s_Eye_of_the_Inevitable_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ahuatotli",
+      "name": "Ahuatotli, the Blind",
+      "category": "Delve",
+      "variants": [
+        {
+          "id": "ahuatotli-the-blind",
+          "label": "Ahuatotli, the Blind",
+          "sourceUrl": "https://www.poewiki.net/wiki/Ahuatotli,_the_Blind",
+          "sections": [
+            {
+              "title": "Item drops",
+              "rows": [
+                {
+                  "name": "Ahkeli's Mountain",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/d/d6/Ahkeli%27s_Mountain_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Cerberus Limb",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/60/Cerberus_Limb_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Doryani's Machinarium",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/7/7f/Doryani%27s_Machinarium_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Putembo's Valley",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/8/8e/Putembo%27s_Valley_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Uzaza's Meadow",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/8/87/Uzaza%27s_Meadow_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Curiosity",
+                  "chance": null,
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/0/0b/Vaal_Aspect_%282_of_4%29_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
