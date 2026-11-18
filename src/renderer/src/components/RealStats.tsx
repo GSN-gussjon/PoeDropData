@@ -65,9 +65,18 @@ export function RealStats({ boss }: { boss: Boss }) {
   useEffect(() => {
     let active = true
     setLoading(true)
+    const variantLabel = boss.variants[0]?.label ?? ''
     Promise.all([
-      supabase.from('boss_fight_stats').select('*').eq('boss_id', boss.id),
-      supabase.from('item_stats').select('*').eq('boss_id', boss.id)
+      supabase
+        .from('boss_fight_stats')
+        .select('*')
+        .eq('boss_id', boss.id)
+        .eq('variant', variantLabel),
+      supabase
+        .from('item_stats')
+        .select('*')
+        .eq('boss_id', boss.id)
+        .eq('variant', variantLabel)
     ]).then(([fightResult, itemResult]) => {
       if (!active) return
       if (fightResult.error) setError(fightResult.error.message)
@@ -79,7 +88,7 @@ export function RealStats({ boss }: { boss: Boss }) {
     return () => {
       active = false
     }
-  }, [boss.id])
+  }, [boss.id, boss.variants])
 
   const totalFights = fights.reduce((sum, fight) => sum + fight.total_fights, 0)
   const totalDrops = fights.reduce((sum, fight) => sum + fight.total_drops, 0)

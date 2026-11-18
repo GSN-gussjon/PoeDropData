@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { Boss, DropRow } from '../../../../shared/schema'
 import { ownerToken, supabase } from '../supabase'
 
@@ -99,27 +99,37 @@ export function DropLog({
   const [confirmingId, setConfirmingId] = useState<number | null>(null)
 
   const tiles = useMemo(() => collectTiles(boss), [boss])
+  const variantLabel = boss.variants[0]?.label ?? null
 
   useEffect(() => {
     setSelected([])
-  }, [boss.id])
+  }, [boss.id, variantLabel])
+
+  const requestRef = useRef(0)
 
   const load = useCallback(async () => {
+    const requestId = ++requestRef.current
     setLoading(true)
     const [entriesResult, statsResult] = await Promise.all([
       supabase
         .from('boss_drops')
         .select('*')
         .eq('boss_id', boss.id)
+        .eq('variant', variantLabel ?? '')
         .order('dropped_at', { ascending: false })
         .limit(40),
-      supabase.from('drop_stats').select('*').eq('boss_id', boss.id)
+      supabase
+        .from('drop_stats')
+        .select('*')
+        .eq('boss_id', boss.id)
+        .eq('variant', variantLabel ?? '')
     ])
+    if (requestId !== requestRef.current) return
     if (entriesResult.error) setError(entriesResult.error.message)
     else setEntries(entriesResult.data as DropEntry[])
     if (!statsResult.error) setStats(statsResult.data as DropStat[])
     setLoading(false)
-  }, [boss.id])
+  }, [boss.id, variantLabel])
 
   useEffect(() => {
     void load()

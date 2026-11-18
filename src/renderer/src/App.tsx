@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
-import { dropDataSchema, type DropData } from '../../../shared/schema'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { dropDataSchema, type Boss, type DropData } from '../../../shared/schema'
 import { BossSidebar } from './components/BossSidebar'
 import { DropTable } from './components/DropTable'
 import { DropLog } from './components/DropLog'
@@ -14,6 +14,13 @@ type LoadResult = {
   data: DropData
   updatedAt: string
   error?: string
+}
+
+type FlatEntry = {
+  id: string
+  name: string
+  category: Boss['category']
+  displayBoss: Boss
 }
 
 function readUsername(): string | null {
@@ -47,7 +54,6 @@ export default function App() {
     try {
       const next = await fetchDropData()
       setResult(next)
-      setSelectedId((current) => current ?? next.data.bosses[0]?.id ?? null)
     } catch (error) {
       setResult((current) =>
         current
@@ -68,14 +74,48 @@ export default function App() {
     try {
       window.localStorage.setItem(USERNAME_KEY, name)
     } catch {
-      // brak dostępu do pamięci lokalnej — nazwa zostanie tylko na THIS session
+      // nazwa zostaje tylko na tę sesję
     }
     setUsername(name)
     setUsernamePromptOpen(false)
   }
 
   const data = result?.data ?? null
-  const selectedBoss = data?.bosses.find((boss) => boss.id === selectedId) ?? data?.bosses[0] ?? null
+
+  // Każdy wariant staje się osobnym wpisem na liście bossów.
+  const flatEntries = useMemo<FlatEntry[]>(() => {
+    const bosses = data?.bosses ?? []
+    const entries: FlatEntry[] = []
+    for (const boss of bosses) {
+      if (boss.variants.length === 0) {
+        entries.push({ id: boss.id, name: boss.name, category: boss.category, displayBoss: boss })
+        continue
+      }
+      for (const variant of boss.variants) {
+        const name = boss.variants.length === 1 ? boss.name : variant.label
+        entries.push({
+          id: `${boss.id}:${variant.id}`,
+          name,
+          category: boss.category,
+          displayBoss: { ...boss, name, variants: [variant] }
+        })
+      }
+    }
+    return entries
+  }, [data])
+
+  const selectedEntry = flatEntries.find((entry) => entry.id === selectedId) ?? flatEntries[0] ?? null
+  const sidebarBosses = useMemo(
+    () =>
+      flatEntries.map((entry) => ({
+        ...entry.displayBoss,
+        id: entry.id,
+        name: entry.name,
+        category: entry.category,
+        variants: []
+      })),
+    [flatEntries]
+  )
 
   const formatDate = (value: string) => {
     const date = new Date(value)
@@ -85,8 +125,8 @@ export default function App() {
   return (
     <div className="app-shell">
       <BossSidebar
-        bosses={data?.bosses ?? []}
-        selectedId={selectedBoss?.id ?? null}
+        bosses={sidebarBosses}
+        selectedId={selectedEntry?.id ?? null}
         query={bossQuery}
         onQueryChange={setBossQuery}
         onSelect={setSelectedId}
@@ -110,20 +150,20 @@ export default function App() {
 
         {loading ? (
           <div className="loading-state">Ładowanie danych...</div>
-        ) : selectedBoss ? (
+        ) : selectedEntry ? (
           tab === 'table' ? (
             <DropTable
-              boss={selectedBoss}
+              boss={selectedEntry.displayBoss}
               onOpenSource={(url) => window.open(url, '_blank', 'noopener,noreferrer')}
             />
           ) : tab === 'log' ? (
             <DropLog
-              boss={selectedBoss}
+              boss={selectedEntry.displayBoss}
               username={username ?? 'Anonim'}
               onChangeUsername={() => setUsernamePromptOpen(true)}
             />
           ) : (
-            <RealStats boss={selectedBoss} />
+            <RealStats boss={selectedEntry.displayBoss} />
           )
         ) : (
           <div className="empty-state">
