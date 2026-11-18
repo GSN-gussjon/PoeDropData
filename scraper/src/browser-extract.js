@@ -14,7 +14,8 @@
     'drops'
   ]
   const CHANCE_PATTERN = /^[~<>]?\s*\d+(?:\.\d+)?\s*%(\s*total)?$/i
-  const JUNK_PATTERN = /^(always|several|note|one of the|the following|drops? on|chance to)\b/i
+  const JUNK_PATTERN =
+    /^(always|several|note|one of the|the following|drops? on|chance to|ritual base type|base type|corpse item|corpse)\b/i
   const INFLUENCE_JUNK = /\b(crusader|hunter|redeemer|warlord|shaper|elder)[- ]items?$/i
 
   function textOf(element) {
@@ -248,6 +249,10 @@
         const lists = /^(UL|OL)$/.test(node.tagName) ? [node] : []
         for (const list of Array.from(node.querySelectorAll('ul, ol'))) lists.push(list)
         for (const list of lists) {
+          const introText = `${list.previousElementSibling?.textContent || ''} ${
+            list.parentElement?.previousElementSibling?.textContent || ''
+          }`
+          if (/corpse|base type/i.test(introText)) continue
           for (const li of Array.from(list.querySelectorAll(':scope > li'))) {
             items.push(...cleanItems(parseItem(li)))
           }

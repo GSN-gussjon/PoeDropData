@@ -4,8 +4,9 @@ A static web app that shows the current drop table of a selected Path of Exile b
 Drop chances are scraped automatically from [poewiki.net](https://www.poewiki.net/) and
 published together with the site — no manual data editing.
 
-The boss list covers pinnacle bosses, Uber Elder (with the **Uber Uber Elder** variant)
-and Delve bosses (Aul, Kurgal, Ahuatotli). Delve pages list drop-restricted items
+The boss list covers pinnacle bosses, Uber Elder (with the **Uber Uber Elder** variant),
+the Ritual boss **The King in the Mists**, and Delve bosses (Aul, Kurgal, Ahuatotli).
+Delve pages list drop-restricted items
 without probabilities, so those entries have no wiki chance; real chances appear in the
 **Statystyka** tab once drops are logged.
 

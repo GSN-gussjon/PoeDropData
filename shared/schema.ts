@@ -46,7 +46,7 @@ export const bossVariantSchema = z.object({
 export const bossSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
-  category: z.enum(['Pinnacle', 'Uber', 'Map', 'Delve', 'Other']).default('Other'),
+  category: z.enum(['Pinnacle', 'Uber', 'Ritual', 'Map', 'Delve', 'Other']).default('Other'),
   variants: z.array(bossVariantSchema).default([])
 })
 

@@ -1,7 +1,7 @@
 export type BossTarget = {
   id: string
   name: string
-  category: 'Pinnacle' | 'Uber' | 'Map' | 'Delve' | 'Other'
+  category: 'Pinnacle' | 'Uber' | 'Ritual' | 'Map' | 'Delve' | 'Other'
   slug: string
   /** Labeli wariantów pobrane z nagłówków tabeli na wiki — używane tylko do walidacji. */
   expectedVariants?: string[]
@@ -75,6 +75,12 @@ export const BOSS_TARGETS: BossTarget[] = [
     name: 'Ahuatotli, the Blind',
     category: 'Delve',
     slug: 'Ahuatotli,_the_Blind'
+  },
+  {
+    id: 'the-king-in-the-mists',
+    name: 'The King in the Mists',
+    category: 'Ritual',
+    slug: 'The_King_in_the_Mists'
   }
 ]
 

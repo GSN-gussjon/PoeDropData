@@ -8,7 +8,7 @@ type Props = {
   onSelect: (id: string) => void
 }
 
-const CATEGORY_ORDER = ['Pinnacle', 'Uber', 'Delve', 'Map', 'Other'] as const
+const CATEGORY_ORDER = ['Pinnacle', 'Uber', 'Ritual', 'Delve', 'Map', 'Other'] as const
 
 export function BossSidebar({ bosses, selectedId, query, onQueryChange, onSelect }: Props) {
   const normalized = query.trim().toLowerCase()

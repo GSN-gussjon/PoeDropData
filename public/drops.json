@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-18T12:11:13.694Z",
+  "generatedAt": "2026-11-18T12:27:23.413Z",
   "source": {
     "name": "poewiki.net",
     "url": "https://www.poewiki.net/",
@@ -1805,6 +1805,75 @@
                   "chance": null,
                   "type": "currency",
                   "iconUrl": "https://www.poewiki.net/images/0/0b/Vaal_Aspect_%282_of_4%29_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-king-in-the-mists",
+      "name": "The King in the Mists",
+      "category": "Ritual",
+      "variants": [
+        {
+          "id": "the-king-in-the-mists",
+          "label": "The King in the Mists",
+          "sourceUrl": "https://www.poewiki.net/wiki/The_King_in_the_Mists",
+          "sections": [
+            {
+              "title": "Drops",
+              "rows": [
+                {
+                  "name": "The Untouched Soul",
+                  "chance": "~40%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/a/a4/The_Untouched_Soul_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Pragmatism",
+                  "chance": "~35%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/a/a6/Pragmatism_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Light of Meaning",
+                  "chance": "20%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/a/a2/The_Light_of_Meaning_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Burden of Shadows",
+                  "chance": "~5%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/0/0b/The_Burden_of_Shadows_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Hextoad Support",
+                  "chance": "~6%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/7/71/Hextoad_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Hexpass Support",
+                  "chance": null,
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/2/29/Hexpass_Support_inventory_icon.png",
+                  "note": "Hexpass Support (~10%) version 3.28.0, [4]",
+                  "children": []
+                },
+                {
+                  "name": "The Endless Darkness",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
                   "children": []
                 }
               ]

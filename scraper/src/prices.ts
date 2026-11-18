@@ -16,7 +16,7 @@ const ITEM_TYPES = [
   'SkillGem'
 ]
 const CURRENCY_TYPES = ['Currency', 'Fragment']
-const EXCHANGE_TYPES = ['Currency', 'Fragment']
+const EXCHANGE_TYPES = ['Currency', 'Fragment', 'DivinationCard']
 
 type PriceEntry = {
   chaos: number

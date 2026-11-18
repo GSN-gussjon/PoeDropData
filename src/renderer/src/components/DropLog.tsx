@@ -53,6 +53,9 @@ function isRealItem(name: string): boolean {
   ) return false
   // Voidstony to przedmioty questowe — wypadają tylko przy pierwszej walce.
   if (/voidstone/i.test(value)) return false
+  // To jest nagłówek grupy w tabeli wiki, a nie przedmiot — dzieci (konkretne
+  // gem-y wsparcia) zostają jako osobne kafelki.
+  if (value.toLowerCase() === 'awakened exceptional support gem') return false
   return true
 }
 
