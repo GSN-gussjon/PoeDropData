@@ -6,11 +6,21 @@ type Props = {
   query: string
   onQueryChange: (value: string) => void
   onSelect: (id: string) => void
+  rankingActive: boolean
+  onSelectRanking: () => void
 }
 
 const CATEGORY_ORDER = ['Pinnacle', 'Uber', 'Ritual', 'Delve', 'Map', 'Other'] as const
 
-export function BossSidebar({ bosses, selectedId, query, onQueryChange, onSelect }: Props) {
+export function BossSidebar({
+  bosses,
+  selectedId,
+  query,
+  onQueryChange,
+  onSelect,
+  rankingActive,
+  onSelectRanking
+}: Props) {
   const normalized = query.trim().toLowerCase()
   const filtered = bosses.filter((boss) => boss.name.toLowerCase().includes(normalized))
 
@@ -59,6 +69,15 @@ export function BossSidebar({ bosses, selectedId, query, onQueryChange, onSelect
         })}
         {filtered.length === 0 && <div className="empty-hint">No bosses match “{query}”.</div>}
       </nav>
+
+      <button
+        type="button"
+        className={`boss-item ranking-entry ${rankingActive ? 'active' : ''}`}
+        onClick={onSelectRanking}
+      >
+        <span className="ranking-icon">★</span>
+        <span className="boss-item-name">Ranking</span>
+      </button>
     </aside>
   )
 }

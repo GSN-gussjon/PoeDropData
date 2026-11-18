@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-18T12:27:23.413Z",
+  "generatedAt": "2026-11-18T12:51:34.532Z",
   "source": {
     "name": "poewiki.net",
     "url": "https://www.poewiki.net/",
@@ -747,6 +747,7 @@
                   "chance": null,
                   "type": "gem",
                   "iconUrl": "https://www.poewiki.net/images/b/b6/Overheat_Support_inventory_icon.png",
+                  "note": "Overheat SupportOverheat SupportExceptional, Support, Melee, Attack Level: (1-3) Cost & Reservation Multiplier: 120%Requires Level (72-76), (114-120) StrSupports melee attack skills you use yourself. Cannot modify the skills of minions.Supported Skills consume all Fortification on use, dealing (6-8)% more Damage with Ailments per 3 Fortification consumed Additional Effects From 1-20% Quality: (0.5-10)% increased Duration of Ailments inflicted with Supported SkillsNo walls can stand against its gaze. No fortress, no cave, no mountain. Better to die fighting.This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
                   "children": []
                 },
                 {
@@ -876,6 +877,7 @@
                   "chance": null,
                   "type": "gem",
                   "iconUrl": "https://www.poewiki.net/images/b/b6/Overheat_Support_inventory_icon.png",
+                  "note": "Overheat SupportOverheat SupportExceptional, Support, Melee, Attack Level: (1-3) Cost & Reservation Multiplier: 120%Requires Level (72-76), (114-120) StrSupports melee attack skills you use yourself. Cannot modify the skills of minions.Supported Skills consume all Fortification on use, dealing (6-8)% more Damage with Ailments per 3 Fortification consumed Additional Effects From 1-20% Quality: (0.5-10)% increased Duration of Ailments inflicted with Supported SkillsNo walls can stand against its gaze. No fortress, no cave, no mountain. Better to die fighting.This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
                   "children": []
                 },
                 {
@@ -958,7 +960,7 @@
                   "chance": null,
                   "type": "unique",
                   "iconUrl": "https://www.poewiki.net/images/7/74/Melding_of_the_Flesh_inventory_icon.png",
-                  "note": "Melding of the Flesh (2%)[5]",
+                  "note": "Melding of the FleshMelding of the Flesh Cobalt JewelLimited to: 1-(80-70)% to all Elemental Resistances Elemental Resistances are capped by your highest Maximum Elemental Resistance instead -(6-4)% to all maximum Elemental Resistances\"We awoke to a sudden jungle rupturing the valleys of our home. Grasping limbs coiled around us, into us. We sank into each other, then rose into the living sky. My family screams alongside me still.\"Place into an allocated Jewel Socket on the Passive Skill Tree. Right click to remove from the Socket. (2%)[5]",
                   "children": []
                 }
               ]
@@ -979,6 +981,7 @@
                   "chance": null,
                   "type": "gem",
                   "iconUrl": "https://www.poewiki.net/images/5/51/Gluttony_Support_inventory_icon.png",
+                  "note": "Gluttony SupportGluttony SupportExceptional, Support, Projectile, Spell, Duration Level: (1-3) Cost & Reservation Multiplier: 140%Requires Level (72-76), (50-52) Dex, (72-75) IntSupports Projectile Spells you cast yourself. Cannot support orb skills, triggered skills, brand skills, Vaal skills, channelling skills, skills with a reservation, or skills used by things other than you.Gain 1 Gluttony on casting Supported Spells On reaching 10 Gluttony, lose all Gluttony and gain Disgorge for 4 seconds While you have Disgorge Supported Spells fire Projectiles in a circle While you have Disgorge Supported Spells fire (5-7) additional Projectiles Additional Effects From 1-20% Quality: Supported Skills deal (0.5-10)% increased Projectile DamageChampions of the Tangle are driven to seek sustenance for their master; should they fall behind, they would soon be consumed as well.This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
                   "children": []
                 },
                 {
@@ -1021,6 +1024,7 @@
                   "chance": null,
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "note": "Auspicious AmbitionsAuspicious Ambitions4Experimented Item Item Level: 100 Double-Influenced Item\"Gaze upon the mirrors of what may come and step backward into infinity.\" -Dexion, Thaumetic Aspirant",
                   "children": []
                 }
               ]
@@ -1101,6 +1105,7 @@
                   "chance": null,
                   "type": "gem",
                   "iconUrl": "https://www.poewiki.net/images/5/51/Gluttony_Support_inventory_icon.png",
+                  "note": "Gluttony SupportGluttony SupportExceptional, Support, Projectile, Spell, Duration Level: (1-3) Cost & Reservation Multiplier: 140%Requires Level (72-76), (50-52) Dex, (72-75) IntSupports Projectile Spells you cast yourself. Cannot support orb skills, triggered skills, brand skills, Vaal skills, channelling skills, skills with a reservation, or skills used by things other than you.Gain 1 Gluttony on casting Supported Spells On reaching 10 Gluttony, lose all Gluttony and gain Disgorge for 4 seconds While you have Disgorge Supported Spells fire Projectiles in a circle While you have Disgorge Supported Spells fire (5-7) additional Projectiles Additional Effects From 1-20% Quality: Supported Skills deal (0.5-10)% increased Projectile DamageChampions of the Tangle are driven to seek sustenance for their master; should they fall behind, they would soon be consumed as well.This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
                   "children": []
                 },
                 {
@@ -1143,6 +1148,7 @@
                   "chance": null,
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "note": "Auspicious AmbitionsAuspicious Ambitions4Experimented Item Item Level: 100 Double-Influenced Item\"Gaze upon the mirrors of what may come and step backward into infinity.\" -Dexion, Thaumetic Aspirant",
                   "children": []
                 }
               ]
@@ -1874,6 +1880,731 @@
                   "chance": null,
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incarnation-of-dread",
+      "name": "Incarnation of Dread",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "regular-dread",
+          "label": "Dread",
+          "sourceUrl": "https://www.poewiki.net/wiki/Incarnation_of_Dread",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Bonemeld",
+                  "chance": "55%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/f/f2/Bonemeld_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Dark Monarch",
+                  "chance": "35%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/d/d5/The_Dark_Monarch_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Seven Teachings",
+                  "chance": "8%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/7/79/Seven_Teachings_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Wine of the Prophet",
+                  "chance": "~2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/c/ce/Wine_of_the_Prophet_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Bound By Destiny",
+                  "chance": "10%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/0/03/Bound_By_Destiny_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Congregation Support",
+                  "chance": null,
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/8/8e/Congregation_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Unravelling",
+                  "chance": "33%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/0/08/Orb_of_Unravelling_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Astrolabe",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/f/fd/Templar_Astrolabe_inventory_icon.png",
+                  "note": "Guaranteed -33% Templar Astrolabe, 7.5% each of other types",
+                  "children": []
+                },
+                {
+                  "name": "Memory Strand",
+                  "chance": null,
+                  "type": "other",
+                  "note": "Memory Strand items",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-dread",
+          "label": "Uber Dread",
+          "sourceUrl": "https://www.poewiki.net/wiki/Incarnation_of_Dread",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "The Hallowed Monarch",
+                  "chance": "~54%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/4/4a/The_Hallowed_Monarch_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Whispers of Infinity",
+                  "chance": "~30%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/5/5c/Whispers_of_Infinity_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Wellwater Phylactery",
+                  "chance": "~14%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/a2/Wellwater_Phylactery_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Golden Charlatan",
+                  "chance": "~2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/c/c3/The_Golden_Charlatan_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Mantle of Dreams",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/b/bd/Mantle_of_Dreams_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Encounter-specific drops",
+              "rows": [
+                {
+                  "name": "Reverent Reliquary Key",
+                  "chance": "~1%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/a/a4/Reverent_Reliquary_Key_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Bound By Destiny",
+                  "chance": "10%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/0/03/Bound_By_Destiny_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Congregation Support",
+                  "chance": null,
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/8/8e/Congregation_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Unravelling",
+                  "chance": "33%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/0/08/Orb_of_Unravelling_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Astrolabe",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/f/fd/Templar_Astrolabe_inventory_icon.png",
+                  "note": "Guaranteed -33% Templar Astrolabe, 7.5% each of other types",
+                  "children": []
+                },
+                {
+                  "name": "Memory Strand",
+                  "chance": null,
+                  "type": "other",
+                  "note": "Memory Strand items",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incarnation-of-neglect",
+      "name": "Incarnation of Neglect",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "regular-neglect",
+          "label": "Neglect",
+          "sourceUrl": "https://www.poewiki.net/wiki/Incarnation_of_Neglect",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Betrayal's Sting",
+                  "chance": "~50%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/b/b5/Betrayal%27s_Sting_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Arkhon's Tools",
+                  "chance": "~38%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/9/95/The_Arkhon%27s_Tools_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Venarius' Astrolabe",
+                  "chance": "~10%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/7/75/Venarius%27_Astrolabe_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Legacy of the Rose",
+                  "chance": "~2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/c/c1/Legacy_of_the_Rose_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Bound By Destiny",
+                  "chance": "10%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/0/03/Bound_By_Destiny_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Frostmage Support",
+                  "chance": "~5%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/f/fa/Frostmage_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Remembrance",
+                  "chance": "33%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/5/51/Orb_of_Remembrance_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Astrolabe",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/f/fd/Templar_Astrolabe_inventory_icon.png",
+                  "note": "Guaranteed -33% Templar Astrolabe, 7.5% each of other types",
+                  "children": []
+                },
+                {
+                  "name": "Memory Strand",
+                  "chance": null,
+                  "type": "other",
+                  "note": "Memory Strand items",
+                  "children": []
+                },
+                {
+                  "name": "Monochrome",
+                  "chance": "~3%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-neglect",
+          "label": "Uber Neglect",
+          "sourceUrl": "https://www.poewiki.net/wiki/Incarnation_of_Neglect",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Refuge in Isolation",
+                  "chance": "55%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/2/27/Refuge_in_Isolation_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Bitter Instinct",
+                  "chance": "30%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/5/5a/Bitter_Instinct_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Haunting Memories",
+                  "chance": "13%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/e/e1/Haunting_Memories_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Festering Resentment",
+                  "chance": "~2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/3/3c/Festering_Resentment_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Encounter-specific drops",
+              "rows": [
+                {
+                  "name": "Lonely Reliquary Key",
+                  "chance": "~1%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/3/33/Lonely_Reliquary_Key_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Bound By Destiny",
+                  "chance": "10%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/0/03/Bound_By_Destiny_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Frostmage Support",
+                  "chance": "~5%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/f/fa/Frostmage_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Remembrance",
+                  "chance": "33%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/5/51/Orb_of_Remembrance_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Astrolabe",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/f/fd/Templar_Astrolabe_inventory_icon.png",
+                  "note": "Guaranteed -33% Templar Astrolabe, 7.5% each of other types",
+                  "children": []
+                },
+                {
+                  "name": "Memory Strand",
+                  "chance": null,
+                  "type": "other",
+                  "note": "Memory Strand items",
+                  "children": []
+                },
+                {
+                  "name": "Monochrome",
+                  "chance": "~3%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incarnation-of-fear",
+      "name": "Incarnation of Fear",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "regular-fear",
+          "label": "Fear",
+          "sourceUrl": "https://www.poewiki.net/wiki/Incarnation_of_Fear",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Servant of Decay",
+                  "chance": "50%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/d/d6/Servant_of_Decay_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Unseen Hue",
+                  "chance": "37%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/af/The_Unseen_Hue_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Enmity's Embrace",
+                  "chance": null,
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/1/1d/Enmity%27s_Embrace_inventory_icon.png",
+                  "note": "Enmity's Embrace (11%)[3][4]",
+                  "children": []
+                },
+                {
+                  "name": "Starcaller",
+                  "chance": "2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/1/10/Starcaller_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Bound By Destiny",
+                  "chance": "10%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/0/03/Bound_By_Destiny_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Greater Devour Support",
+                  "chance": "5%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/c/cd/Greater_Devour_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Intention",
+                  "chance": "50%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/8/80/Orb_of_Intention_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Astrolabe",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/f/fd/Templar_Astrolabe_inventory_icon.png",
+                  "note": "Guaranteed -33% Templar Astrolabe, 7.5% each of other types",
+                  "children": []
+                },
+                {
+                  "name": "Memory Strand",
+                  "chance": null,
+                  "type": "other",
+                  "note": "Memory Strand items",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-fear",
+          "label": "Uber Fear",
+          "sourceUrl": "https://www.poewiki.net/wiki/Incarnation_of_Fear",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "The Caged Mammoth",
+                  "chance": "60%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/6f/The_Caged_Mammoth_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Coiling Whisper",
+                  "chance": "36%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/3/3e/Coiling_Whisper_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Wing of the Wyvern",
+                  "chance": "2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/1/19/Wing_of_the_Wyvern_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Woespike",
+                  "chance": "2%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/6/60/Woespike_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Encounter-specific drops",
+              "rows": [
+                {
+                  "name": "Traumatic Reliquary Key",
+                  "chance": "~1%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/c/c4/Traumatic_Reliquary_Key_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Bound By Destiny",
+                  "chance": "10%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/0/03/Bound_By_Destiny_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Greater Devour Support",
+                  "chance": "5%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/c/cd/Greater_Devour_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Orb of Intention",
+                  "chance": "50%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/8/80/Orb_of_Intention_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Astrolabe",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/f/fd/Templar_Astrolabe_inventory_icon.png",
+                  "note": "Guaranteed -33% Templar Astrolabe, 7.5% each of other types",
+                  "children": []
+                },
+                {
+                  "name": "Memory Strand",
+                  "chance": null,
+                  "type": "other",
+                  "note": "Memory Strand items",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "venarius",
+      "name": "Venarius (Cortex)",
+      "category": "Pinnacle",
+      "variants": [
+        {
+          "id": "venarius",
+          "label": "Venarius",
+          "sourceUrl": "https://www.poewiki.net/wiki/Venarius",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Offering to the Serpent",
+                  "chance": "43%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/d/d5/Offering_to_the_Serpent_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Perepiteia",
+                  "chance": "43%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/b/ba/Perepiteia_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Garb of the Ephemeral",
+                  "chance": "9%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/e/e7/Garb_of_the_Ephemeral_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Bottled Faith",
+                  "chance": "5%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/d/d5/Bottled_Faith_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Greater Kinetic Instability Support",
+                  "chance": "~10%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/2/29/Greater_Kinetic_Instability_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Hook",
+                  "chance": "~5%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Imperfect Memories",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "note": "Imperfect Memories (<0.5%?) [confirmation needed]",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uber-venarius",
+          "label": "Uber Venarius",
+          "sourceUrl": "https://www.poewiki.net/wiki/Venarius",
+          "sections": [
+            {
+              "title": "Guaranteed Unique",
+              "rows": [
+                {
+                  "name": "Nebulis",
+                  "chance": "34%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/f/f9/Nebulis_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Mask of the Tribunal",
+                  "chance": "34%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/2/2a/Mask_of_the_Tribunal_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Circle of Ambition",
+                  "chance": "19%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/5/55/Circle_of_Ambition_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Apostate",
+                  "chance": "8%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/a/a2/The_Apostate_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Rational Doctrine",
+                  "chance": "5%",
+                  "type": "unique",
+                  "iconUrl": "https://www.poewiki.net/images/1/17/Rational_Doctrine_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Encounter-specific drops",
+              "rows": [
+                {
+                  "name": "Forgotten Reliquary Key",
+                  "chance": "1.5%",
+                  "type": "currency",
+                  "iconUrl": "https://www.poewiki.net/images/2/28/Forgotten_Reliquary_Key_inventory_icon.png",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Additional drops",
+              "rows": [
+                {
+                  "name": "Greater Kinetic Instability Support",
+                  "chance": "~10%",
+                  "type": "gem",
+                  "iconUrl": "https://www.poewiki.net/images/2/29/Greater_Kinetic_Instability_Support_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "The Hook",
+                  "chance": "~5%",
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "children": []
+                },
+                {
+                  "name": "Imperfect Memories",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/6/68/Divination_card_inventory_icon.png",
+                  "note": "Imperfect Memories (<0.5%?) [confirmation needed]",
                   "children": []
                 }
               ]

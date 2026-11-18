@@ -338,3 +338,28 @@ button, input { font: inherit; }
 .real-stat-row { margin-bottom: 10px; }
 .real-chance { color: #8fd07a; font-weight: 700; font-size: 13px; }
 .real-sample { display: block; font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+/* Ranking zbiorczy */
+.ranking-board { padding: 28px 34px 8px; border-bottom: 1px solid var(--border); }
+.ranking-table { max-width: 900px; }
+.ranking-table th, .ranking-table td { padding: 10px 14px; }
+.ranking-table thead th { text-align: left; }
+.ranking-place { width: 50px; color: var(--muted); }
+.ranking-value { color: #9fd97f; font-weight: 700; }
+.ranking-value small { color: var(--muted); font-weight: 400; margin-left: 6px; }
+.ranking-table .own-row { background: var(--accent-soft); }
+.ranking-controls { display: flex; align-items: flex-end; gap: 20px; }
+.ranking-controls label { display: flex; flex-direction: column; gap: 5px; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.ranking-controls select { background: #100f0d; border: 1px solid var(--border); border-radius: 4px; color: var(--text); padding: 7px 10px; outline: none; }
+.ranking-controls select:focus { border-color: var(--accent); }
+
+.ranking-entry {
+  margin: 0 10px 20px;
+  width: calc(100% - 20px);
+  border: 1px solid var(--border);
+  border-left: 2px solid transparent;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.ranking-entry.active { border-left-color: var(--accent); }
+.ranking-icon { color: var(--accent); }

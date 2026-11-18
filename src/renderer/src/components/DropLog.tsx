@@ -164,15 +164,21 @@ export function DropLog({
     const fightId = newId()
     const now = new Date().toISOString()
     const { error: insertError } = await supabase.from('boss_drops').insert(
-      selected.map((tile) => ({
-        boss_id: boss.id,
-        variant: tile.variant,
-        item_name: tile.name,
-        added_by: username,
-        fight_id: fightId,
-        owner_token: ownerToken || null,
-        dropped_at: now
-      }))
+      selected.map((tile) => {
+        const price = prices?.prices[normalizeItemName(tile.name)]
+        return {
+          boss_id: boss.id,
+          variant: tile.variant,
+          item_name: tile.name,
+          added_by: username,
+          fight_id: fightId,
+          owner_token: ownerToken || null,
+          chaos_value: price?.chaos ?? null,
+          divine_value: price?.divine ?? null,
+          price_league: prices?.league ?? null,
+          dropped_at: now
+        }
+      })
     )
     if (insertError) {
       setError(insertError.message)

@@ -11,11 +11,14 @@ import { DropTable } from './components/DropTable'
 import { DropLog } from './components/DropLog'
 import { UsernamePrompt } from './components/UsernamePrompt'
 import { RealStats } from './components/RealStats'
+import { RankingBoard } from './components/RankingBoard'
+import { BossRanking } from './components/BossRanking'
 
 const DATA_URL = `${import.meta.env.BASE_URL}drops.json`
 const USERNAME_KEY = 'poe-boss-scrapper.username'
+const RANKING_ID = '__ranking__'
 
-type Tab = 'table' | 'log' | 'stats'
+type Tab = 'table' | 'log' | 'stats' | 'ranking'
 type LoadResult = {
   data: DropData
   prices: PriceData | null
@@ -121,7 +124,10 @@ export default function App() {
     return entries
   }, [data])
 
-  const selectedEntry = flatEntries.find((entry) => entry.id === selectedId) ?? flatEntries[0] ?? null
+  const rankingActive = selectedId === RANKING_ID
+  const selectedEntry = rankingActive
+    ? null
+    : (flatEntries.find((entry) => entry.id === selectedId) ?? flatEntries[0] ?? null)
   const sidebarBosses = useMemo(
     () =>
       flatEntries.map((entry) => ({
@@ -143,30 +149,39 @@ export default function App() {
     <div className="app-shell">
       <BossSidebar
         bosses={sidebarBosses}
-        selectedId={selectedEntry?.id ?? null}
+        selectedId={rankingActive ? null : (selectedEntry?.id ?? null)}
         query={bossQuery}
         onQueryChange={setBossQuery}
         onSelect={setSelectedId}
+        rankingActive={rankingActive}
+        onSelectRanking={() => setSelectedId(RANKING_ID)}
       />
       <main className="main-area">
-        <div className="tab-bar">
-          <button
-            type="button"
-            className={tab === 'table' ? 'active' : ''}
-            onClick={() => setTab('table')}
-          >
-            Drop table
-          </button>
-          <button type="button" className={tab === 'log' ? 'active' : ''} onClick={() => setTab('log')}>
-            Zapis dropu
-          </button>
-          <button type="button" className={tab === 'stats' ? 'active' : ''} onClick={() => setTab('stats')}>
-            Statystyka
-          </button>
-        </div>
+        {!rankingActive && (
+          <div className="tab-bar">
+            <button
+              type="button"
+              className={tab === 'table' ? 'active' : ''}
+              onClick={() => setTab('table')}
+            >
+              Drop table
+            </button>
+            <button type="button" className={tab === 'log' ? 'active' : ''} onClick={() => setTab('log')}>
+              Zapis dropu
+            </button>
+            <button type="button" className={tab === 'stats' ? 'active' : ''} onClick={() => setTab('stats')}>
+              Statystyka
+            </button>
+            <button type="button" className={tab === 'ranking' ? 'active' : ''} onClick={() => setTab('ranking')}>
+              Ranking
+            </button>
+          </div>
+        )}
 
         {loading ? (
           <div className="loading-state">Ładowanie danych...</div>
+        ) : rankingActive ? (
+          <RankingBoard username={username ?? 'Anonim'} />
         ) : selectedEntry ? (
           tab === 'table' ? (
             <DropTable
@@ -180,6 +195,8 @@ export default function App() {
               username={username ?? 'Anonim'}
               onChangeUsername={() => setUsernamePromptOpen(true)}
             />
+          ) : tab === 'ranking' ? (
+            <BossRanking boss={selectedEntry.displayBoss} username={username ?? 'Anonim'} />
           ) : (
             <RealStats boss={selectedEntry.displayBoss} />
           )

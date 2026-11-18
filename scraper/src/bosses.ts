@@ -81,6 +81,30 @@ export const BOSS_TARGETS: BossTarget[] = [
     name: 'The King in the Mists',
     category: 'Ritual',
     slug: 'The_King_in_the_Mists'
+  },
+  {
+    id: 'incarnation-of-dread',
+    name: 'Incarnation of Dread',
+    category: 'Pinnacle',
+    slug: 'Incarnation_of_Dread'
+  },
+  {
+    id: 'incarnation-of-neglect',
+    name: 'Incarnation of Neglect',
+    category: 'Pinnacle',
+    slug: 'Incarnation_of_Neglect'
+  },
+  {
+    id: 'incarnation-of-fear',
+    name: 'Incarnation of Fear',
+    category: 'Pinnacle',
+    slug: 'Incarnation_of_Fear'
+  },
+  {
+    id: 'venarius',
+    name: 'Venarius (Cortex)',
+    category: 'Pinnacle',
+    slug: 'Venarius'
   }
 ]
 
