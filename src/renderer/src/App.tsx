@@ -68,6 +68,11 @@ export default function App() {
   const [refreshing, setRefreshing] = useState(false)
   const [username, setUsername] = useState<string | null>(readUsername)
   const [usernamePromptOpen, setUsernamePromptOpen] = useState(() => readUsername() === null)
+  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth > 760)
+
+  function closeSidebarOnMobile() {
+    if (window.innerWidth <= 760) setSidebarOpen(false)
+  }
 
   const load = useCallback(async (isRefresh: boolean) => {
     if (isRefresh) setRefreshing(true)
@@ -147,16 +152,39 @@ export default function App() {
 
   return (
     <div className="app-shell">
+      {sidebarOpen && (
+        <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} aria-hidden="true" />
+      )}
       <BossSidebar
         bosses={sidebarBosses}
         selectedId={rankingActive ? null : (selectedEntry?.id ?? null)}
         query={bossQuery}
         onQueryChange={setBossQuery}
-        onSelect={setSelectedId}
+        onSelect={(id) => {
+          setSelectedId(id)
+          closeSidebarOnMobile()
+        }}
         rankingActive={rankingActive}
-        onSelectRanking={() => setSelectedId(RANKING_ID)}
+        onSelectRanking={() => {
+          setSelectedId(RANKING_ID)
+          closeSidebarOnMobile()
+        }}
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
       <main className="main-area">
+        {!sidebarOpen && (
+          <div className="sidebar-toggle-bar">
+            <button
+              type="button"
+              className="sidebar-fab"
+              onClick={() => setSidebarOpen(true)}
+              aria-label="Pokaż listę bossów"
+            >
+              ☰
+            </button>
+          </div>
+        )}
         {!rankingActive && (
           <div className="tab-bar">
             <button

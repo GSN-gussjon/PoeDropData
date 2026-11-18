@@ -8,6 +8,8 @@ type Props = {
   onSelect: (id: string) => void
   rankingActive: boolean
   onSelectRanking: () => void
+  open: boolean
+  onClose: () => void
 }
 
 const CATEGORY_ORDER = ['Pinnacle', 'Uber', 'Ritual', 'Delve', 'Map', 'Other'] as const
@@ -19,19 +21,24 @@ export function BossSidebar({
   onQueryChange,
   onSelect,
   rankingActive,
-  onSelectRanking
+  onSelectRanking,
+  open,
+  onClose
 }: Props) {
   const normalized = query.trim().toLowerCase()
   const filtered = bosses.filter((boss) => boss.name.toLowerCase().includes(normalized))
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${open ? '' : 'closed'}`}>
       <div className="brand">
         <span className="brand-mark">◆</span>
         <div>
           <div className="brand-title">PoE Boss Scrapper</div>
           <div className="brand-subtitle">Drop table reference</div>
         </div>
+        <button type="button" className="sidebar-close" onClick={onClose} aria-label="Schowaj listę bossów">
+          ×
+        </button>
       </div>
 
       <div className="search-box">

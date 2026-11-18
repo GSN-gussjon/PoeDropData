@@ -51,6 +51,34 @@ button, input { font: inherit; }
 }
 .search-box input:focus, .toolbar input:focus { border-color: var(--accent); }
 
+.sidebar { transition: margin-left 0.2s ease, transform 0.2s ease; }
+.sidebar.closed { margin-left: -280px; }
+.sidebar-close {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--muted);
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 16px;
+}
+.sidebar-close:hover { color: var(--text); border-color: var(--accent); }
+.sidebar-backdrop { display: none; }
+.sidebar-toggle-bar { display: flex; align-items: center; min-height: 46px; padding: 0 12px; }
+.sidebar-fab {
+  background: var(--bg-panel);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  width: 38px;
+  height: 34px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
 .boss-list { overflow-y: auto; padding: 0 10px 20px; flex: 1; }
 .boss-group { margin-bottom: 14px; }
 .boss-group-title {
@@ -357,9 +385,30 @@ button, input { font: inherit; }
   margin: 0 10px 20px;
   width: calc(100% - 20px);
   border: 1px solid var(--border);
-  border-left: 2px solid transparent;
+  border-left: 2px solid var(--border);
   justify-content: flex-start;
   gap: 10px;
 }
 .ranking-entry.active { border-left-color: var(--accent); }
 .ranking-icon { color: var(--accent); }
+
+@media (max-width: 760px) {
+  .app-shell { position: relative; }
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 60;
+    width: min(82vw, 300px);
+    box-shadow: 8px 0 30px rgba(0,0,0,0.55);
+  }
+  .sidebar.closed { margin-left: 0; transform: translateX(-100%); }
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: rgba(0,0,0,0.5);
+  }
+  .content, .drop-log, .ranking-board { padding-left: 16px; padding-right: 16px; }
+  .tab-bar { padding-left: 16px; }
+}
