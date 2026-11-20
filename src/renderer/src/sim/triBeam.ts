@@ -5,13 +5,17 @@ export type Arena = { x: number; y: number; radius: number }
 
 type Segment = { a: Vec; b: Vec }
 
+function lerp(a: number, b: number, t: number): number {
+  return a + (b - a) * t
+}
+
+function lerpVec(a: Vec, b: Vec, t: number): Vec {
+  return { x: lerp(a.x, b.x, t), y: lerp(a.y, b.y, t) }
+}
+
 function normalize(v: Vec): Vec {
   const length = Math.hypot(v.x, v.y) || 1
   return { x: v.x / length, y: v.y / length }
-}
-
-function lerp(a: number, b: number, t: number): number {
-  return a + (b - a) * t
 }
 
 function pointSegmentDistance(p: Vec, a: Vec, b: Vec): number {
@@ -23,95 +27,140 @@ function pointSegmentDistance(p: Vec, a: Vec, b: Vec): number {
   return Math.hypot(p.x - (a.x + t * dx), p.y - (a.y + t * dy))
 }
 
-/**
- * Jedna nić energetyczna. Jej początek jest trwale zakotwiczony w dłoni Maven —
- * wiązka nie przesuwa się, tylko rotuje wokół tego punktu.
- */
+function strokeLine(
+  ctx: CanvasRenderingContext2D,
+  from: Vec,
+  to: Vec,
+  color: string,
+  width: number,
+  alpha: number
+): void {
+  ctx.save()
+  ctx.globalAlpha = alpha * 0.18
+  ctx.strokeStyle = color
+  ctx.lineWidth = width * 4
+  ctx.lineCap = 'round'
+  ctx.beginPath()
+  ctx.moveTo(from.x, from.y)
+  ctx.lineTo(to.x, to.y)
+  ctx.stroke()
+
+  ctx.globalAlpha = alpha * 0.55
+  ctx.lineWidth = width * 1.8
+  ctx.beginPath()
+  ctx.moveTo(from.x, from.y)
+  ctx.lineTo(to.x, to.y)
+  ctx.stroke()
+
+  ctx.globalAlpha = alpha
+  ctx.strokeStyle = '#ffffff'
+  ctx.lineWidth = width * 0.45
+  ctx.beginPath()
+  ctx.moveTo(from.x, from.y)
+  ctx.lineTo(to.x, to.y)
+  ctx.stroke()
+  ctx.restore()
+}
+
+/** Pojedyncza nić: zaczyna się w dłoni Maven, kończy na kresce łączącej. */
 export class LaserBeam {
-  readonly origin: Vec
-  angle: number
-  previousAngle: number
-  readonly color: string
-  readonly glow: string
-  readonly arena: Arena
-  hit = false
+  endPoint: Vec
+  previousEndPoint: Vec
 
-  constructor(origin: Vec, startAngle: number, color: string, glow: string, arena: Arena) {
-    this.origin = { ...origin }
-    this.angle = startAngle
-    this.previousAngle = startAngle
-    this.color = color
-    this.glow = glow
-    this.arena = arena
+  constructor(
+    readonly origin: Vec,
+    readonly color: string,
+    readonly glow: string,
+    endPoint: Vec
+  ) {
+    this.endPoint = { ...endPoint }
+    this.previousEndPoint = { ...endPoint }
   }
 
-  setAngle(angle: number): void {
-    this.previousAngle = this.angle
-    this.angle = angle
-  }
-
-  segmentAt(angle: number, length: number): Segment {
-    const direction = normalize({ x: Math.cos(angle), y: Math.sin(angle) })
-    const oc = { x: this.origin.x - this.arena.x, y: this.origin.y - this.arena.y }
-    const dot = oc.x * direction.x + oc.y * direction.y
-    const discriminant =
-      dot * dot - (oc.x * oc.x + oc.y * oc.y - this.arena.radius * this.arena.radius)
-    let reach = length
-    if (discriminant >= 0) {
-      const edge = -dot + Math.sqrt(discriminant)
-      if (edge > 0) reach = Math.min(length, edge)
-    }
-    return {
-      a: { ...this.origin },
-      b: {
-        x: this.origin.x + direction.x * reach,
-        y: this.origin.y + direction.y * reach
-      }
-    }
+  setEndPoint(point: Vec): void {
+    this.previousEndPoint = this.endPoint
+    this.endPoint = { ...point }
   }
 
   render(ctx: CanvasRenderingContext2D, config: TriBeamConfig, alpha: number): void {
-    const segment = this.segmentAt(this.angle, config.beamLength)
+    strokeLine(ctx, this.origin, this.endPoint, this.glow, config.width, alpha * 0.9)
     ctx.save()
-    ctx.lineCap = 'round'
-
-    ctx.globalAlpha = alpha * 0.16
-    ctx.strokeStyle = this.glow
-    ctx.lineWidth = config.width * 4
-    ctx.beginPath()
-    ctx.moveTo(segment.a.x, segment.a.y)
-    ctx.lineTo(segment.b.x, segment.b.y)
-    ctx.stroke()
-
-    ctx.globalAlpha = alpha * 0.5
-    ctx.strokeStyle = this.color
-    ctx.lineWidth = config.width * 1.7
-    ctx.beginPath()
-    ctx.moveTo(segment.a.x, segment.a.y)
-    ctx.lineTo(segment.b.x, segment.b.y)
-    ctx.stroke()
-
     ctx.globalAlpha = alpha
-    ctx.strokeStyle = '#ffffff'
-    ctx.lineWidth = config.width * 0.4
-    ctx.beginPath()
-    ctx.moveTo(segment.a.x, segment.a.y)
-    ctx.lineTo(segment.b.x, segment.b.y)
-    ctx.stroke()
-
-    // Źródło przy palcach Maven — nieruchome.
     ctx.fillStyle = this.color
     ctx.beginPath()
     ctx.arc(this.origin.x, this.origin.y, config.width * 0.9, 0, Math.PI * 2)
     ctx.fill()
     ctx.restore()
   }
+}
 
-  /**
-   * Swept collision: sprawdzamy pozycję wiązki i gracza w kilku podkrokach
-   * między poprzednią a bieżącą klatką (rotacja + ruch gracza).
-   */
-  sweepHit(
+/** Trzy nici z jednej dłoni + kreska łącząca ich końce. */
+export class LaserGroup {
+  readonly beams: LaserBeam[] = []
+  connector: Segment = { a: { x: 0, y: 0 }, b: { x: 0, y: 0 } }
+  previousConnector: Segment = { a: { x: 0, y: 0 }, b: { x: 0, y: 0 } }
+
+  constructor(
+    readonly hand: Vec,
+    readonly side: -1 | 1,
+    readonly direction: Vec,
+    readonly focus: Vec,
+    readonly config: TriBeamConfig,
+    readonly color: string,
+    readonly glow: string
+  ) {
+    for (let i = 0; i < config.beamCount; i++) {
+      this.beams.push(new LaserBeam(hand, color, glow, { ...focus }))
+    }
+    this.update(0)
+    this.previousConnector = {
+      a: { ...this.connector.a },
+      b: { ...this.connector.b }
+    }
+  }
+
+  update(progress: number): void {
+    this.previousConnector = {
+      a: { ...this.connector.a },
+      b: { ...this.connector.b }
+    }
+
+    // Kierunek ruchu to `direction`; kreska jest mu prostopadła („w szerz").
+    const cross = { x: -this.direction.y, y: this.direction.x }
+    const amplitude = this.config.lineLength * 1.6
+    const offset = this.side * amplitude * (2 * progress - 1)
+    // Przesunięcie wzdłuż kreski: przy spotkaniu końce obu kresek
+    // zchodzą się w jednym punkcie (pozycji gracza), nie nakładają się.
+    const crossOffset = this.side * this.config.lineLength / 2
+    const center = {
+      x: this.focus.x + this.direction.x * offset + cross.x * crossOffset,
+      y: this.focus.y + this.direction.y * offset + cross.y * crossOffset
+    }
+    const half = this.config.lineLength / 2
+    const start = {
+      x: center.x - cross.x * half,
+      y: center.y - cross.y * half
+    }
+    const end = {
+      x: center.x + cross.x * half,
+      y: center.y + cross.y * half
+    }
+    this.connector = { a: start, b: end }
+
+    const count = this.beams.length
+    for (let i = 0; i < count; i++) {
+      const t = count === 1 ? 0.5 : i / (count - 1)
+      this.beams[i].setEndPoint(lerpVec(start, end, t))
+    }
+  }
+
+  render(ctx: CanvasRenderingContext2D, config: TriBeamConfig, alpha: number): void {
+    for (const beam of this.beams) beam.render(ctx, config, alpha)
+    strokeLine(ctx, this.connector.a, this.connector.b, this.glow, config.connectorWidth, alpha)
+  }
+
+  /** Swept collision tylko na kresce łączącej końce wiązek. */
+  sweepConnectorHit(
     playerFrom: Vec,
     playerTo: Vec,
     config: TriBeamConfig,
@@ -119,45 +168,12 @@ export class LaserBeam {
   ): boolean {
     for (let i = 0; i <= samples; i++) {
       const t = i / samples
-      const angle = lerp(this.previousAngle, this.angle, t)
-      const segment = this.segmentAt(angle, config.beamLength)
-      const player = {
-        x: lerp(playerFrom.x, playerTo.x, t),
-        y: lerp(playerFrom.y, playerTo.y, t)
-      }
-      if (pointSegmentDistance(player, segment.a, segment.b) <= config.hitWidth) return true
+      const a = lerpVec(this.previousConnector.a, this.connector.a, t)
+      const b = lerpVec(this.previousConnector.b, this.connector.b, t)
+      const player = lerpVec(playerFrom, playerTo, t)
+      if (pointSegmentDistance(player, a, b) <= config.connectorHitWidth) return true
     }
     return false
-  }
-}
-
-/** Zestaw trzech nici wychodzących z jednej dłoni. */
-export class LaserGroup {
-  readonly beams: LaserBeam[] = []
-
-  constructor(
-    hand: Vec,
-    startAngle: number,
-    color: string,
-    glow: string,
-    config: TriBeamConfig,
-    arena: Arena
-  ) {
-    for (let i = 0; i < config.beamCount; i++) {
-      const offset = (i - (config.beamCount - 1) / 2) * config.spread
-      this.beams.push(new LaserBeam(hand, startAngle + offset, color, glow, arena))
-    }
-  }
-
-  setProgress(progress: number, startAngle: number, endAngle: number, config: TriBeamConfig): void {
-    for (let i = 0; i < this.beams.length; i++) {
-      const offset = (i - (config.beamCount - 1) / 2) * config.spread
-      this.beams[i].setAngle(lerp(startAngle, endAngle, progress) + offset)
-    }
-  }
-
-  render(ctx: CanvasRenderingContext2D, config: TriBeamConfig, alpha: number): void {
-    for (const beam of this.beams) beam.render(ctx, config, alpha)
   }
 }
 
@@ -173,11 +189,7 @@ export class DamageHandler {
   }
 }
 
-/**
- * Cykl ataku „Stand still!" (Tri-Beam Claws).
- * Prawa grupa rotuje w lewo, lewa w prawo — w połowie się krzyżują,
- * potem rotują dalej aż do granic areny i znikają.
- */
+/** Cykl ataku „Stand still!" (Tri-Beam Claws). */
 export class MavenAttackController {
   private phase: 'preparation' | 'telegraph' | 'active' | 'done' = 'preparation'
   private elapsed = 0
@@ -185,25 +197,33 @@ export class MavenAttackController {
   private rightGroup: LaserGroup | null = null
   private damageHandler = new DamageHandler()
   private origin: Vec = { x: 0, y: 0 }
+  private focus: Vec = { x: 0, y: 0 }
 
   constructor(private readonly config: TriBeamConfig) {}
 
   get active(): boolean { return this.phase !== 'done' }
   get phaseName(): string { return this.phase }
 
-  start(now: number, origin: Vec, arena: Arena): void {
+  start(now: number, origin: Vec, arena: Arena, focus: Vec): void {
+    void arena
+    void now
     this.elapsed = 0
     this.phase = 'preparation'
     this.origin = { ...origin }
+    this.focus = { ...focus }
     this.damageHandler = new DamageHandler()
-    void now
+
+    // Kierunek przesuwu obu kresek: prostopadły do linii Maven → gracz.
+    // Same kreski są mu prostopadłe, więc zbliżają się „w szerz".
+    const towardFocus = normalize({ x: focus.x - origin.x, y: focus.y - origin.y })
+    const direction = normalize({ x: -towardFocus.y, y: towardFocus.x })
 
     const handOffset = this.config.handOffset
     const leftHand = { x: origin.x - handOffset, y: origin.y + 6 }
     const rightHand = { x: origin.x + handOffset, y: origin.y + 6 }
 
-    this.leftGroup = new LaserGroup(leftHand, this.config.leftStartAngle, '#7fd8ff', '#3a86ff', this.config, arena)
-    this.rightGroup = new LaserGroup(rightHand, this.config.rightStartAngle, '#d99cff', '#8b4dff', this.config, arena)
+    this.leftGroup = new LaserGroup(leftHand, -1, direction, focus, this.config, '#7fd8ff', '#3a86ff')
+    this.rightGroup = new LaserGroup(rightHand, 1, direction, focus, this.config, '#d99cff', '#8b4dff')
   }
 
   update(
@@ -227,22 +247,19 @@ export class MavenAttackController {
     if (this.phase !== 'active' || !this.leftGroup || !this.rightGroup) return
 
     const progress = Math.min(1, this.elapsed / this.config.active)
-    this.leftGroup.setProgress(progress, this.config.leftStartAngle, this.config.leftEndAngle, this.config)
-    this.rightGroup.setProgress(progress, this.config.rightStartAngle, this.config.rightEndAngle, this.config)
+    this.leftGroup.update(progress)
+    this.rightGroup.update(progress)
 
     for (const group of [this.leftGroup, this.rightGroup]) {
-      for (const beam of group.beams) {
-        if (!beam.hit && beam.sweepHit(playerFrom, playerTo, this.config)) {
-          beam.hit = true
-          if (this.damageHandler.canHit(now)) {
-            this.damageHandler.register(now)
-            onHit(this.config.damage)
-          }
-        }
+      if (
+        group.sweepConnectorHit(playerFrom, playerTo, this.config) &&
+        this.damageHandler.canHit(now)
+      ) {
+        this.damageHandler.register(now)
+        onHit(this.config.damage)
       }
     }
 
-    // Końcówki wiązek dosięgły przeciwległych granic areny — znikają.
     if (progress >= 1) this.phase = 'done'
   }
 

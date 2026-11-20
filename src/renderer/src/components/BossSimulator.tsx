@@ -2,6 +2,11 @@ import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } f
 import type { Boss, DropRow } from '../../../../shared/schema'
 import type { BossAttack, BossMechanics, MechanicKind } from '../../../../shared/mechanics'
 import { MavenAttackController } from '../sim/triBeam'
+import { CascadeAttackController } from '../sim/cascade'
+import { DecelAttackController } from '../sim/decel'
+import { MemoryAttackController } from '../sim/memory'
+import { ArenaPlatforms } from '../sim/platforms'
+import { BrainBlastController } from '../sim/brainBlast'
 
 const W = 1024
 const H = 576
@@ -42,12 +47,14 @@ type Hazard = {
   blast?: number
   lastZone?: string | null
   slow?: boolean
+  orbitAngleOffset?: number
 }
 
-type Bolt = { x: number; y: number; vx: number; vy: number; life: number; damage: number }
+type Bolt = { x: number; y: number; vx: number; vy: number; life: number; damage: number; enemy: boolean }
 
 type Game = {
   stageIndex: number
+  mavenPos: { x: number; y: number }
   mavenHp: number
   mavenMaxHp: number
   nucleusDamage: number
@@ -62,6 +69,16 @@ type Game = {
   bolts: Bolt[]
   currentAttack: BossAttack | null
   triBeam: MavenAttackController | null
+  cascade: CascadeAttackController | null
+  decel: DecelAttackController | null
+  memoryGame: MemoryAttackController | null
+  platforms: ArenaPlatforms
+  brainBlast: BrainBlastController | null
+  memoryGamesPlayed: number
+  brainBlastUsed: boolean
+  phaseDelayUntil: number
+  attackGapUntil: number
+  autoAttackAt: number
   attackEnd: number
   attackHit: boolean
   nextAt: Record<string, number>
@@ -118,9 +135,17 @@ function zoneOf(x: number, y: number): string | null {
 function createGame(settings: Settings, mechanics: BossMechanics): Game {
   const nextAt: Record<string, number> = {}
   for (const [index, attack] of mechanics.attacks.entries()) nextAt[attack.id] = 2 + index * 1.2
-  nextAt['memory'] = 8
+  // Pierwsza Memory Game nie może pojawić się przed 60. sekundą walki.
+  nextAt['memory'] = 60
+  // Ustawienie testowe: wybrany atak zawsze uruchamia się pierwszy.
+  if (mechanics.firstAttack) {
+    for (const key of Object.keys(nextAt)) nextAt[key] = 60
+    nextAt[mechanics.firstAttack] = 0.4
+  }
+  nextAt['memory'] = Math.max(60, nextAt['memory'])
   return {
     stageIndex: 0,
+    mavenPos: { ...MAVEN_POS },
     mavenHp: mechanics.mavenHp,
     mavenMaxHp: mechanics.mavenHp,
     nucleusDamage: 0,
@@ -129,7 +154,15 @@ function createGame(settings: Settings, mechanics: BossMechanics): Game {
       dps: settings.dps, target: { x: CX, y: CY + 150 }, facing: -Math.PI / 2
     },
     hazards: [], ambient: [], ambientStageId: null, ambientHitAt: 0,
-    bolts: [], currentAttack: null, triBeam: null, attackEnd: 0, attackHit: false, nextAt,
+    bolts: [], currentAttack: null, triBeam: null, cascade: null, decel: null, memoryGame: null,
+    platforms: new ArenaPlatforms({ x: CX, y: CY, radius: ARENA_R }, mechanics.platforms),
+    brainBlast: null,
+    memoryGamesPlayed: 0,
+    brainBlastUsed: false,
+    phaseDelayUntil: 0,
+    attackGapUntil: 0,
+    autoAttackAt: 1,
+    attackEnd: 0, attackHit: false, nextAt,
     time: 0, lastFrame: 0, invulnUntil: 0, noRegenUntil: 0, dashUntil: 0, dashCd: 0, attackCd: 0,
     voice: '', dodged: 0, hits: 0, result: 'playing', drop: null
   }
@@ -140,7 +173,7 @@ function activeStage(mechanics: BossMechanics, game: Game) {
 }
 
 function activeTarget(mechanics: BossMechanics, game: Game) {
-  return activeStage(mechanics, game).target === 'maven' ? MAVEN_POS : NUCLEUS_POS
+  return activeStage(mechanics, game).target === 'maven' ? game.mavenPos : NUCLEUS_POS
 }
 
 function makeHazard(def: BossAttack, game: Game, mechanics: BossMechanics): Hazard[] {
@@ -220,6 +253,11 @@ function makeHazard(def: BossAttack, game: Game, mechanics: BossMechanics): Haza
         ...base, x: target.x, y: target.y, vx: Math.cos(toPlayer) * 170, vy: Math.sin(toPlayer) * 170,
         radius: 38
       }]
+    case 'teleport': {
+      const a = Math.random() * Math.PI * 2
+      const r = 50 + Math.random() * (ARENA_R - 110)
+      return [{ ...base, x: CX + Math.cos(a) * r, y: CY + Math.sin(a) * r, radius: 42, damage: 0 }]
+    }
   }
 }
 
@@ -249,6 +287,7 @@ function hazardHits(hazard: Hazard, game: Game, mechanics: BossMechanics): boole
     case 'safe':
       return !(hazard.safe || []).some((s) => Math.hypot(p.x - s.x, p.y - s.y) < s.radius)
     case 'memory':
+    case 'teleport':
       return false
   }
 }
@@ -262,6 +301,7 @@ function updateHazards(game: Game, mechanics: BossMechanics, dt: number) {
     if (hazard.stage === 'telegraph' && hazard.t >= hazard.telegraph) {
       hazard.stage = 'active'
       hazard.t = 0
+      if (hazard.kind === 'teleport') game.mavenPos = { x: hazard.x, y: hazard.y }
     }
 
     if (hazard.spin) hazard.angle += hazard.spin * dt
@@ -390,9 +430,11 @@ function makeAmbient(game: Game, mechanics: BossMechanics): Hazard[] {
     hit: false, x: CX, y: CY, vx: 0, vy: 0, radius: 20, angle: 0, spin: 0, delay: 0
   }
   if (stage.target === 'nucleus') {
+    // Promienie są przypięte do platform: przechodzą przez ich środki i obracają się
+    // z dokładnie taką samą prędkością kątową.
     return [
-      { ...base, angle: 0, spin: 0.7 },
-      { ...base, angle: Math.PI, spin: 0.7 }
+      { ...base, angle: game.platforms.angle, spin: 0, orbitAngleOffset: 0 },
+      { ...base, angle: game.platforms.angle + Math.PI, spin: 0, orbitAngleOffset: Math.PI }
     ]
   }
   if (stage.id === 'final') {
@@ -408,7 +450,11 @@ function updateAmbient(game: Game, dt: number) {
   if (game.ambient.length === 0) return
   const p = game.player
   for (const hazard of game.ambient) {
-    hazard.angle += hazard.spin * dt
+    if (hazard.orbitAngleOffset !== undefined) {
+      hazard.angle = game.platforms.angle + hazard.orbitAngleOffset
+    } else {
+      hazard.angle += hazard.spin * dt
+    }
     if (hazard.kind === 'gapped') {
       const drift = hazard.gapDrift ?? 30
       const next = (hazard.gapStart ?? 60) + drift * dt
@@ -428,6 +474,48 @@ function updateAmbient(game: Game, dt: number) {
   }
 }
 
+function drawEnergyBeam(
+  ctx: CanvasRenderingContext2D,
+  ox: number,
+  oy: number,
+  angle: number,
+  from: number,
+  to: number,
+  tint: string,
+  time: number
+): void {
+  const x1 = ox + Math.cos(angle) * from
+  const y1 = oy + Math.sin(angle) * from
+  const x2 = ox + Math.cos(angle) * to
+  const y2 = oy + Math.sin(angle) * to
+  ctx.save()
+  ctx.lineCap = 'round'
+
+  ctx.globalAlpha = 0.18 + 0.05 * Math.sin(time * 9)
+  ctx.strokeStyle = tint
+  ctx.lineWidth = 44
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke()
+
+  ctx.globalAlpha = 0.55
+  ctx.strokeStyle = '#63c8ff'
+  ctx.lineWidth = 18
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke()
+
+  ctx.globalAlpha = 1
+  ctx.strokeStyle = '#e6f7ff'
+  ctx.lineWidth = 5
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke()
+
+  // Świecący węzeł na końcu promienia.
+  ctx.globalAlpha = 0.9
+  ctx.fillStyle = '#bff0ff'
+  ctx.beginPath(); ctx.arc(x2, y2, 13, 0, Math.PI * 2); ctx.fill()
+  ctx.globalAlpha = 0.3
+  ctx.fillStyle = tint
+  ctx.beginPath(); ctx.arc(x2, y2, 26, 0, Math.PI * 2); ctx.fill()
+  ctx.restore()
+}
+
 function draw(ctx: CanvasRenderingContext2D, game: Game, mechanics: BossMechanics) {
   ctx.clearRect(0, 0, W, H)
   ctx.fillStyle = '#0d0c0b'
@@ -440,26 +528,29 @@ function draw(ctx: CanvasRenderingContext2D, game: Game, mechanics: BossMechanic
   ctx.beginPath(); ctx.arc(CX, CY, ARENA_R, 0, Math.PI * 2)
   ctx.fillStyle = 'rgba(40,34,26,0.55)'; ctx.fill()
   ctx.strokeStyle = '#6a5738'; ctx.lineWidth = 2; ctx.stroke()
+  game.platforms.render(ctx)
 
   const stage = activeStage(mechanics, game)
   const target = activeTarget(mechanics, game)
 
-  for (const h of [...game.ambient, ...game.hazards]) {
+  // W trakcie Brain Blastu (i przerwy między fazami) lasery nie są jeszcze widoczne.
+  const visibleAmbient =
+    game.brainBlast || game.time < game.phaseDelayUntil ? [] : game.ambient
+  for (const h of [...visibleAmbient, ...game.hazards]) {
     const active = h.stage === 'active'
     ctx.save()
     ctx.globalAlpha = active ? 0.8 : 0.28 + 0.2 * Math.sin(game.time * 12)
     if (h.kind === 'gapped') {
       const gapStart = h.gapStart ?? 60
       const gapEnd = gapStart + (h.gapLen ?? 54)
-      ctx.strokeStyle = active ? '#ff5a4a' : '#ff9a4a'
-      ctx.lineWidth = 26
-      for (const [from, to] of [[0, gapStart], [gapEnd, 600]]) {
-        ctx.beginPath()
-        ctx.moveTo(CX + Math.cos(h.angle) * from, CY + Math.sin(h.angle) * from)
-        ctx.lineTo(CX + Math.cos(h.angle) * to, CY + Math.sin(h.angle) * to)
-        ctx.stroke()
+      ctx.globalAlpha = active ? 1 : 0.35
+      for (const [from, to] of [[0, gapStart], [gapEnd, ARENA_R + 40]]) {
+        drawEnergyBeam(ctx, CX, CY, h.angle, from, to, '#ff62c8', game.time)
       }
-    } else if (h.kind === 'beams' || h.kind === 'rotating' || h.kind === 'beam') {
+    } else if (h.kind === 'rotating') {
+      ctx.globalAlpha = active ? 1 : 0.35
+      drawEnergyBeam(ctx, CX, CY, h.angle, 0, ARENA_R + 40, '#3a86ff', game.time)
+    } else if (h.kind === 'beams' || h.kind === 'beam') {
       ctx.strokeStyle = active ? '#ff5a4a' : '#ff9a4a'
       ctx.lineWidth = h.kind === 'beam' ? h.radius * 2 : 28
       ctx.beginPath()
@@ -495,6 +586,18 @@ function draw(ctx: CanvasRenderingContext2D, game: Game, mechanics: BossMechanic
         ctx.strokeStyle = 'rgba(255,80,60,0.9)'; ctx.lineWidth = 6; ctx.stroke()
         ctx.fillStyle = 'rgba(255,60,50,0.12)'; ctx.fill()
       }
+    } else if (h.kind === 'teleport') {
+      if (active) {
+        ctx.fillStyle = 'rgba(213,140,255,0.3)'
+        ctx.beginPath(); ctx.arc(h.x, h.y, h.radius, 0, Math.PI * 2); ctx.fill()
+      } else {
+        ctx.strokeStyle = '#d58cff'; ctx.lineWidth = 3
+        ctx.setLineDash([6, 6])
+        ctx.beginPath()
+        ctx.arc(h.x, h.y, h.radius + Math.sin(game.time * 10) * 6, 0, Math.PI * 2)
+        ctx.stroke()
+        ctx.setLineDash([])
+      }
     } else {
       ctx.beginPath(); ctx.arc(h.x, h.y, h.radius, 0, Math.PI * 2)
       ctx.fillStyle = h.kind === 'well' ? 'rgba(80,180,255,0.28)'
@@ -506,10 +609,18 @@ function draw(ctx: CanvasRenderingContext2D, game: Game, mechanics: BossMechanic
   }
 
   if (game.triBeam) game.triBeam.render(ctx, game.time)
+  if (game.cascade) game.cascade.render(ctx, game.time)
+  if (game.decel) game.decel.render(ctx, game.time)
+  if (game.memoryGame) game.memoryGame.render(ctx, game.time)
+  if (game.brainBlast) game.brainBlast.render(ctx)
 
   for (const bolt of game.bolts) {
-    ctx.beginPath(); ctx.arc(bolt.x, bolt.y, 5, 0, Math.PI * 2)
-    ctx.fillStyle = '#9fe9ff'; ctx.fill()
+    ctx.beginPath(); ctx.arc(bolt.x, bolt.y, bolt.enemy ? 7 : 5, 0, Math.PI * 2)
+    ctx.fillStyle = bolt.enemy ? '#ff8ad8' : '#9fe9ff'; ctx.fill()
+    if (bolt.enemy) {
+      ctx.beginPath(); ctx.arc(bolt.x, bolt.y, 13, 0, Math.PI * 2)
+      ctx.strokeStyle = 'rgba(255,120,220,0.35)'; ctx.lineWidth = 2; ctx.stroke()
+    }
   }
 
   ctx.beginPath(); ctx.arc(target.x, target.y, 24, 0, Math.PI * 2)
@@ -572,17 +683,27 @@ export function BossSimulator({ bossId, boss, mechanics, onClose }: {
       const dt = Math.min((timestamp - game.lastFrame) / 1000, 0.05)
       game.lastFrame = timestamp
       game.time += dt
+      game.platforms.update(dt)
 
       const stageNow = activeStage(mechanics, game)
       const playerFrom = { x: game.player.x, y: game.player.y }
-      const slowed = game.time < game.dashUntil
+      const slowed =
+        game.time < game.dashUntil ||
+        (game.decel ? game.decel.slowFactorAt(game.player) < 1 : false)
       const speed = slowed ? 90 : 205
       const dx = game.player.target.x - game.player.x
       const dy = game.player.target.y - game.player.y
       const distance = Math.hypot(dx, dy)
       if (distance > 4) {
         const step = Math.min(distance, speed * dt)
-        const next = insideArena(game.player.x + (dx / distance) * step, game.player.y + (dy / distance) * step)
+        const desired = { x: game.player.x + (dx / distance) * step, y: game.player.y + (dy / distance) * step }
+        const canUsePlatforms = game.platforms.enterable
+        const freeMovement =
+          canUsePlatforms &&
+          (game.platforms.contains(desired) ||
+            game.platforms.contains(game.player.target) ||
+            game.platforms.contains(game.player))
+        const next = freeMovement ? desired : insideArena(desired.x, desired.y)
         game.player.x = next.x; game.player.y = next.y
         game.player.facing = Math.atan2(dy, dx)
       }
@@ -591,11 +712,43 @@ export function BossSimulator({ bossId, boss, mechanics, onClose }: {
         game.player.hp = Math.min(game.player.maxHp, game.player.hp + game.player.regen * dt)
       }
 
-      // Pociski gracza
+      // Auto attack działa jak zwykły atak: nigdy w trakcie innej umiejętności.
+      if (
+        stageNow.target === 'maven' &&
+        !game.currentAttack &&
+        game.time >= game.phaseDelayUntil &&
+        game.time >= game.autoAttackAt &&
+        !game.memoryGame?.invulnerable
+      ) {
+        const origin = activeTarget(mechanics, game)
+        const angle = Math.atan2(game.player.y - origin.y, game.player.x - origin.x)
+        const cfg = mechanics.autoAttack
+        game.bolts.push({
+          x: origin.x, y: origin.y,
+          vx: Math.cos(angle) * cfg.speed, vy: Math.sin(angle) * cfg.speed,
+          life: 2.5, damage: cfg.damage, enemy: true
+        })
+        game.autoAttackAt = game.time + cfg.interval
+      }
+
       const target = activeTarget(mechanics, game)
       for (const bolt of game.bolts) {
         bolt.x += bolt.vx * dt; bolt.y += bolt.vy * dt; bolt.life -= dt
+        if (bolt.enemy) {
+          if (Math.hypot(bolt.x - game.player.x, bolt.y - game.player.y) < 16) {
+            if (game.time >= game.invulnUntil) {
+              game.player.hp -= bolt.damage
+              game.hits++
+              game.invulnUntil = game.time + 0.5
+            }
+            bolt.life = 0
+          }
+          continue
+        }
         if (Math.hypot(bolt.x - target.x, bolt.y - target.y) < 32) {
+          // Nowy cel nie jest aktywny w trakcie przerwy między fazami.
+          if (game.time < game.phaseDelayUntil) { bolt.life = 0; continue }
+          if (game.memoryGame?.invulnerable || game.brainBlast?.active) { bolt.life = 0; continue }
           if (stageNow.target === 'maven') game.mavenHp -= bolt.damage
           else game.nucleusDamage += bolt.damage
           bolt.life = 0
@@ -620,34 +773,175 @@ export function BossSimulator({ bossId, boss, mechanics, onClose }: {
             }
           )
         }
-        if (game.time >= game.attackEnd) {
+        if (game.cascade) {
+          game.cascade.update(
+            dt,
+            game.time,
+            playerFrom,
+            { x: game.player.x, y: game.player.y },
+            { x: game.player.x, y: game.player.y },
+            { x: CX, y: CY, radius: ARENA_R },
+            (damage) => {
+              if (game.time < game.invulnUntil) return
+              game.player.hp -= damage
+              game.hits++
+              game.attackHit = true
+              game.invulnUntil = game.time + 0.8
+            }
+          )
+        }
+        if (game.decel) {
+          game.decel.update(
+            dt,
+            game.time,
+            playerFrom,
+            { x: game.player.x, y: game.player.y },
+            { x: game.player.x, y: game.player.y },
+            { x: CX, y: CY, radius: ARENA_R },
+            (damage) => {
+              if (game.time < game.invulnUntil) return
+              game.player.hp -= damage
+              game.hits++
+              game.attackHit = true
+              game.invulnUntil = game.time + 0.8
+            },
+            (damage) => {
+              game.player.hp -= damage
+            }
+          )
+        }
+        if (game.triBeam && !game.triBeam.active) game.triBeam = null
+        if (game.cascade && !game.cascade.active) game.cascade = null
+        if (game.decel && !game.decel.active) game.decel = null
+        if (game.memoryGame) {
+          game.memoryGame.update(
+            dt,
+            { x: game.player.x, y: game.player.y },
+            (damage) => {
+              if (game.time < game.invulnUntil) return
+              game.player.hp -= damage
+              game.hits++
+              game.attackHit = true
+              game.invulnUntil = game.time + 1
+            },
+            (seconds) => {
+              game.dashUntil = Math.max(game.dashUntil, game.time + seconds)
+            }
+          )
+          game.voice = game.memoryGame.voice
+          if (!game.memoryGame.active) game.memoryGame = null
+        }
+        if (game.brainBlast) {
+          game.brainBlast.update(
+            dt,
+            { x: game.player.x, y: game.player.y },
+            (damage) => {
+              if (game.time < game.invulnUntil) return
+              game.player.hp -= damage
+              game.hits++
+              game.attackHit = true
+              game.invulnUntil = game.time + 1
+            }
+          )
+          game.voice = game.brainBlast.voice
+          if (!game.brainBlast.active) game.brainBlast = null
+        }
+
+        // Atak kończy się dopiero wtedy, gdy wszystkie jego efekty znikną —
+        // globalny cooldown liczymy od tego momentu, nie od startu ataku.
+        const controllersDone =
+          !game.triBeam && !game.cascade && !game.decel && !game.memoryGame && !game.brainBlast
+        if (controllersDone && game.hazards.length === 0) {
+          const finished = game.currentAttack
           if (!game.attackHit) game.dodged++
+          game.attackGapUntil = game.time + 4
+          game.autoAttackAt = game.time
+          if (finished) game.nextAt[finished.id] = game.time + finished.cooldown
           game.hazards = []
-          game.triBeam = null
+          game.platforms.enterable = false
+          game.platforms.setSpeedFactor(1)
           game.currentAttack = null
           game.voice = ''
         }
       }
 
       // Harmonogram ataków (cooldown liczony od końca poprzedniego)
-      if (!game.currentAttack && game.time >= game.invulnUntil) {
+      if (
+        !game.currentAttack &&
+        game.time >= game.invulnUntil &&
+        game.time >= game.attackGapUntil &&
+        game.time >= game.phaseDelayUntil
+      ) {
         const ready = mechanics.attacks
           .filter((a) => a.stages.includes(stageNow.id))
           .filter((a) => (game.nextAt[a.id] ?? 0) <= game.time)
+          .filter((a) => a.id !== 'brain-blast' || !game.brainBlastUsed)
+          .filter((a) => a.id !== 'memory' || game.memoryGamesPlayed > 0 || game.time >= 60)
           .sort((a, b) => (game.nextAt[a.id] ?? 0) - (game.nextAt[b.id] ?? 0))
         if (ready.length > 0) {
-          const forcedMemory = ready.find((a) => a.id === 'memory')
-          const def = forcedMemory ?? ready[0]
+          const def = ready[0]
           game.currentAttack = def
           game.attackHit = false
           if (def.id === 'tri-beam') {
             const config = mechanics.triBeam
             const controller = new MavenAttackController(config)
-            controller.start(game.time, MAVEN_POS, { x: CX, y: CY, radius: ARENA_R })
+            controller.start(game.time, game.mavenPos, { x: CX, y: CY, radius: ARENA_R }, {
+              x: game.player.x,
+              y: game.player.y
+            })
             game.triBeam = controller
             game.hazards = []
             game.attackEnd =
               game.time + config.preparation + config.telegraph + config.active
+            game.nextAt[def.id] = game.attackEnd + def.cooldown
+          } else if (def.id === 'cascade') {
+            const config = mechanics.cascade
+            const controller = new CascadeAttackController(config)
+            controller.start(game.time, activeTarget(mechanics, game))
+            game.cascade = controller
+            game.hazards = []
+            game.attackEnd =
+              game.time + config.preparation + config.telegraph + config.ballCount * config.interval + 3
+            game.nextAt[def.id] = game.attackEnd + def.cooldown
+          } else if (def.id === 'decel') {
+            const config = mechanics.decel
+            const controller = new DecelAttackController(config)
+            controller.start(game.time, activeTarget(mechanics, game))
+            game.decel = controller
+            game.hazards = []
+            game.attackEnd =
+              game.time + config.preparation + config.telegraph +
+              config.orbCount * config.interval + config.wellDuration + 2
+            game.nextAt[def.id] = game.attackEnd + def.cooldown
+          } else if (def.id === 'memory') {
+            const config = mechanics.memory
+            const stepCount =
+              game.memoryGamesPlayed === 0 ? config.shortSteps : config.longSteps
+            const controller = new MemoryAttackController(
+              config,
+              { x: CX, y: CY, radius: ARENA_R },
+              stepCount
+            )
+            game.memoryGamesPlayed++
+            controller.start(game.time, game.mavenPos)
+            game.memoryGame = controller
+            game.hazards = []
+            game.attackEnd =
+              game.time + config.preparation + stepCount * config.flashInterval +
+              config.repeatWindow + 2
+            game.nextAt[def.id] = game.attackEnd + def.cooldown
+          } else if (def.id === 'brain-blast') {
+            const config = mechanics.brainBlast
+            const controller = new BrainBlastController(config, game.platforms)
+            // Brain Blast tylko raz na fazę Nucleus — na jej samym początku.
+            game.brainBlastUsed = true
+            controller.start(game.time)
+            game.brainBlast = controller
+            // Nucleus jest niewrażliwy od pierwszej klatki ataku.
+            game.bolts = game.bolts.filter((b) => b.enemy)
+            game.hazards = []
+            game.attackEnd =
+              game.time + config.preparation + config.blastDuration + config.aftermath + 1
             game.nextAt[def.id] = game.attackEnd + def.cooldown
           } else {
             game.attackEnd = game.time + def.telegraph + def.active
@@ -663,8 +957,17 @@ export function BossSimulator({ bossId, boss, mechanics, onClose }: {
         game.stageIndex++
         game.hazards = []
         game.triBeam = null
+        game.cascade = null
+        game.decel = null
+        game.memoryGame = null
+        game.brainBlast = null
+        game.platforms.enterable = false
+        game.platforms.setSpeedFactor(1)
         game.currentAttack = null
         game.voice = ''
+        game.mavenPos = { ...MAVEN_POS }
+        game.ambient = []
+        game.ambientStageId = null
         if (game.stageIndex >= mechanics.stages.length) {
           game.result = 'won'; game.drop = rollDrop(boss); setDrop(game.drop)
           try {
@@ -674,35 +977,68 @@ export function BossSimulator({ bossId, boss, mechanics, onClose }: {
           setStage('won')
         } else {
           const next = mechanics.stages[game.stageIndex]
+          // Kilka sekund przerwy, żeby przejście między fazami nie było chaotyczne.
+          const resumeAt = game.time + 3
+          game.phaseDelayUntil = resumeAt
+          game.attackGapUntil = resumeAt
           game.mavenHp = next.id === 'final' ? game.mavenMaxHp * 1.6 : game.mavenMaxHp
           game.nucleusDamage = 0
-          game.invulnUntil = game.time + 1
-          game.nextAt['memory'] = game.time + 1.5
-          if (next.id === 'final') game.nextAt['brain-beam-2'] = game.time + 0.5
-          if (next.target === 'nucleus') game.nextAt['brain-beam'] = game.time + 0.5
+          // Ataki i tak są zablokowane przez phaseDelayUntil.
+          game.invulnUntil = game.time + 0.1
+          if (next.target === 'nucleus') {
+            // Brain Blast tylko raz, na samym starcie fazy Nucleus.
+            game.brainBlastUsed = false
+            for (const key of Object.keys(game.nextAt)) game.nextAt[key] = resumeAt + 60
+            game.nextAt['brain-blast'] = resumeAt + 0.5
+          } else if (next.id === 'final') {
+            game.nextAt['brain-beam-2'] = resumeAt + 0.5
+          }
         }
       }
       if (stageNow.target === 'nucleus' && game.nucleusDamage >= mechanics.nucleusStageDamage) {
         game.stageIndex++
         game.hazards = []
         game.triBeam = null
+        game.cascade = null
+        game.decel = null
+        game.memoryGame = null
+        game.brainBlast = null
+        game.platforms.enterable = false
+        game.platforms.setSpeedFactor(1)
         game.currentAttack = null
         game.nucleusDamage = 0
+        game.mavenPos = { ...MAVEN_POS }
+        game.ambient = []
+        game.ambientStageId = null
+        const resumeAt = game.time + 3
+        game.phaseDelayUntil = resumeAt
+        game.attackGapUntil = resumeAt
         const nextStage = mechanics.stages[game.stageIndex]
         game.mavenHp = nextStage.id === 'final' ? game.mavenMaxHp * 1.6 : game.mavenMaxHp
-        game.invulnUntil = game.time + 1
+        game.invulnUntil = game.time + 0.1
         game.voice = ''
-        game.nextAt['memory'] = game.time + 1.5
-        if (nextStage.id === 'final') game.nextAt['brain-beam-2'] = game.time + 0.5
+        // Po fazie Nucleus Maven prawie zawsze (90%) otwiera Memory Game.
+        const preferMemory = Math.random() < 0.9
+        for (const key of Object.keys(game.nextAt)) {
+          game.nextAt[key] = resumeAt + (preferMemory ? 3 : 0.5)
+        }
+        game.nextAt['memory'] = Math.max(60, resumeAt + (preferMemory ? 0.5 : 5))
+        if (nextStage.id === 'final') game.nextAt['brain-beam-2'] = resumeAt + 0.5
       }
       if (game.player.hp <= 0) { game.result = 'lost'; setStage('lost') }
 
       const stageId = activeStage(mechanics, game).id
-      if (game.ambientStageId !== stageId) {
-        game.ambientStageId = stageId
-        game.ambient = makeAmbient(game, mechanics)
+      if (game.time < game.phaseDelayUntil || game.brainBlast) {
+        // Lasery nie pojawiają się w przerwie ani w trakcie Brain Blastu.
+        game.ambient = []
+        game.ambientStageId = null
+      } else {
+        if (game.ambientStageId !== stageId) {
+          game.ambientStageId = stageId
+          game.ambient = makeAmbient(game, mechanics)
+        }
+        updateAmbient(game, dt)
       }
-      updateAmbient(game, dt)
 
       draw(ctx, game, mechanics)
 
@@ -741,12 +1077,15 @@ export function BossSimulator({ bossId, boss, mechanics, onClose }: {
       const angle = Math.atan2(pos.y - game.player.y, pos.x - game.player.x)
       game.bolts.push({
         x: game.player.x, y: game.player.y, vx: Math.cos(angle) * 700, vy: Math.sin(angle) * 700,
-        life: 1.2, damage: game.player.dps * 0.35
+        life: 1.2, damage: game.player.dps * 0.35, enemy: false
       })
       game.attackCd = game.time + 0.35
       return
     }
-    game.player.target = insideArena(pos.x, pos.y)
+    game.player.target =
+      game.platforms.enterable && game.platforms.contains(pos)
+        ? pos
+        : insideArena(pos.x, pos.y)
   }
 
   useEffect(() => {

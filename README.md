@@ -79,12 +79,41 @@ with voice lines from the wiki, and a reward screen rolling from `drops.json`. T
 „Stand still!" (Tri-Beam Claws) attack uses a dedicated controller (`sim/triBeam.ts`):
 six thin threads in two groups of three anchored at Maven's hands: the right group
 rotates left, the left group rotates right, they cross in the middle and keep rotating
-until their tips reach the arena edge and vanish. Independent of the player, with
-swept collision and separate
+until the attack ends. The beams end exactly at the connector line. The connectors are
+perpendicular to their direction of travel (they move „across", not along it) and meet
+at the player's position at the moment the attack starts. The threads themselves are visual
+only — damage comes from the straight connector drawn across the three threads at the
+distance of the player's starting position (not at the arena edge). Independent of the player, with swept collision and separate
 preparation/telegraph/active phases. Its geometry, speed and damage are configurable
-in `public/boss-mechanics.json` under `triBeam`. The
-Nucleus phases have permanent rotating Brain Beams; the final phase has five rotating
-beams with moving gaps. The Memory Game uses a 3-zone pattern in phase 3 and 6-zone
+in `public/boss-mechanics.json` under `triBeam`. The „A cascade of pain!" attack has its
+own controller (`sim/cascade.ts`): five sequential, piercing ice balls aimed at the
+player, configurable under `cascade`. The „Decelerating Projectiles" attack has its own controller (`sim/decel.ts`): three
+orbs slow down, then accelerate while chasing the player and leave Gravity Wells
+(cold DOT + 50% action-speed slow) on detonation, configurable under `decel`. The
+Memory Game has its own controller (`sim/memory.ts`): a purple
+sequence in three arena zones, then „Scurry, scurry!" with a blast expanding from the
+centre; wrong steps slow the player and accelerate the blast, configurable under
+`memory`. Its first use in a fight is always a 3-step pattern (and never before 60 s
+of combat), every later one has 6 steps, and its cooldown is 60 s. After each Nucleus
+phase Maven prefers Memory Game with 90% probability; other Maven attacks have a 5 s
+cooldown. Maven can also teleport to a random point of the arena (`kind: teleport`).
+The arena also has two small platforms on the outer rim, 180° apart,
+sharing one rotation (`sim/platforms.ts`); they stop during Brain Blast and become the
+only safe spots. The platforms are elongated tangential capsules (`length`, `radius`
+in `public/boss-mechanics.json`) and rotate at half the previous speed. During Brain
+Blast the player can move freely anywhere inside a platform. `sim/brainBlast.ts` handles the slowdown, expanding blast, 3 s window
+to step back onto the arena, push-off and resumption of rotation. Brain Blast runs only
+once per Nucleus phase — as its very first attack — and the Nucleus is invulnerable
+while it lasts. Each phase change has a 3 s pause with no attacks or damage. After
+every attack Maven pauses for 4 s during which only her basic auto attack is available
+— a pink projectile fired toward the player at most every 2 s (configurable under
+`autoAttack`); it never overlaps other skills, and its cooldown starts when the
+previous attack fully finishes. The Nucleus phases have permanent rotating Brain Beams
+locked to the platforms' rotation so they cross each platform's centre, and they do
+not appear during Brain Blast. The final phase has five rotating beams with moving
+gaps. Both use a blue-white energy beam with a glowing core and pink/blue outer glow
+(the rotating beams tinted blue, the gapped final beams pink).
+The Memory Game uses a 3-zone pattern in phase 3 and 6-zone
 patterns later, with a slowly expanding blast that punishes wrong steps. Results stay
 in `localStorage` only — nothing is written to Supabase. Mechanics data comes from
 poewiki.net, poedb.tw and the Maxroll boss guide (CC BY-NC-SA 3.0).
