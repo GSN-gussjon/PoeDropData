@@ -75,6 +75,7 @@ type Game = {
   platforms: ArenaPlatforms
   brainBlast: BrainBlastController | null
   memoryGamesPlayed: number
+  nucleiKilled: number
   brainBlastUsed: boolean
   phaseDelayUntil: number
   attackGapUntil: number
@@ -158,6 +159,7 @@ function createGame(settings: Settings, mechanics: BossMechanics): Game {
     platforms: new ArenaPlatforms({ x: CX, y: CY, radius: ARENA_R }, mechanics.platforms),
     brainBlast: null,
     memoryGamesPlayed: 0,
+    nucleiKilled: 0,
     brainBlastUsed: false,
     phaseDelayUntil: 0,
     attackGapUntil: 0,
@@ -438,10 +440,15 @@ function makeAmbient(game: Game, mechanics: BossMechanics): Hazard[] {
     ]
   }
   if (stage.id === 'final') {
-    return [0, 1, 2, 3, 4].map((i) => ({
-      ...base, kind: 'gapped', damage: 800, angle: (i * Math.PI * 2) / 5, spin: 0.65,
-      gapStart: 60 + i * 18, gapLen: 54, gapDrift: i % 2 === 0 ? 35 : -35
-    }))
+    // Pięć promieni z lukami obraca się z prędkością platform.
+    return [0, 1, 2, 3, 4].map((i) => {
+      const offset = (i * Math.PI * 2) / 5
+      return {
+        ...base, kind: 'gapped', damage: 800, angle: game.platforms.angle + offset,
+        spin: 0, orbitAngleOffset: offset,
+        gapStart: 60 + i * 18, gapLen: 54, gapDrift: i % 2 === 0 ? 35 : -35
+      }
+    })
   }
   return []
 }
@@ -533,9 +540,13 @@ function draw(ctx: CanvasRenderingContext2D, game: Game, mechanics: BossMechanic
   const stage = activeStage(mechanics, game)
   const target = activeTarget(mechanics, game)
 
-  // W trakcie Brain Blastu (i przerwy między fazami) lasery nie są jeszcze widoczne.
+  // Przed zakończeniem Brain Blastu (oraz w przerwie) lasery nie są widoczne.
+  const drawStage = activeStage(mechanics, game)
+  const drawNucleusAwaitingBlast = drawStage.target === 'nucleus' && !game.brainBlastUsed
   const visibleAmbient =
-    game.brainBlast || game.time < game.phaseDelayUntil ? [] : game.ambient
+    game.brainBlast || drawNucleusAwaitingBlast || game.time < game.phaseDelayUntil
+      ? []
+      : game.ambient
   for (const h of [...visibleAmbient, ...game.hazards]) {
     const active = h.stage === 'active'
     ctx.save()
@@ -876,7 +887,7 @@ export function BossSimulator({ bossId, boss, mechanics, onClose }: {
           .filter((a) => a.stages.includes(stageNow.id))
           .filter((a) => (game.nextAt[a.id] ?? 0) <= game.time)
           .filter((a) => a.id !== 'brain-blast' || !game.brainBlastUsed)
-          .filter((a) => a.id !== 'memory' || game.memoryGamesPlayed > 0 || game.time >= 60)
+          .filter((a) => a.id !== 'memory' || game.memoryGamesPlayed > 0 || game.nucleiKilled > 0 || game.time >= 60)
           .sort((a, b) => (game.nextAt[a.id] ?? 0) - (game.nextAt[b.id] ?? 0))
         if (ready.length > 0) {
           const def = ready[0]
@@ -1017,19 +1028,26 @@ export function BossSimulator({ bossId, boss, mechanics, onClose }: {
         game.mavenHp = nextStage.id === 'final' ? game.mavenMaxHp * 1.6 : game.mavenMaxHp
         game.invulnUntil = game.time + 0.1
         game.voice = ''
+        game.nucleiKilled++
         // Po fazie Nucleus Maven prawie zawsze (90%) otwiera Memory Game.
         const preferMemory = Math.random() < 0.9
         for (const key of Object.keys(game.nextAt)) {
           game.nextAt[key] = resumeAt + (preferMemory ? 3 : 0.5)
         }
-        game.nextAt['memory'] = Math.max(60, resumeAt + (preferMemory ? 0.5 : 5))
+        // Limit 60 s dotyczy tylko pierwszej gry przed pierwszym Nucleusem —
+        // po jego zabiciu reguła 90% musi zadziałać od razu.
+        const memoryAt = resumeAt + (preferMemory ? 0.5 : 5)
+        game.nextAt['memory'] = game.nucleiKilled >= 1 ? memoryAt : Math.max(60, memoryAt)
         if (nextStage.id === 'final') game.nextAt['brain-beam-2'] = resumeAt + 0.5
       }
       if (game.player.hp <= 0) { game.result = 'lost'; setStage('lost') }
 
       const stageId = activeStage(mechanics, game).id
-      if (game.time < game.phaseDelayUntil || game.brainBlast) {
-        // Lasery nie pojawiają się w przerwie ani w trakcie Brain Blastu.
+      // W fazie Nucleus lasery czekają aż do pełnego zakończenia Brain Blastu —
+      // nie mogą mignąć w krótkim oknie między przerwą a startem ataku.
+      const nucleusAwaitingBlast =
+        activeStage(mechanics, game).target === 'nucleus' && !game.brainBlastUsed
+      if (game.time < game.phaseDelayUntil || game.brainBlast || nucleusAwaitingBlast) {
         game.ambient = []
         game.ambientStageId = null
       } else {

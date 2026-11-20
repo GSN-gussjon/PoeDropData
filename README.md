@@ -93,10 +93,11 @@ orbs slow down, then accelerate while chasing the player and leave Gravity Wells
 Memory Game has its own controller (`sim/memory.ts`): a purple
 sequence in three arena zones, then „Scurry, scurry!" with a blast expanding from the
 centre; wrong steps slow the player and accelerate the blast, configurable under
-`memory`. Its first use in a fight is always a 3-step pattern (and never before 60 s
-of combat), every later one has 6 steps, and its cooldown is 60 s. After each Nucleus
-phase Maven prefers Memory Game with 90% probability; other Maven attacks have a 5 s
-cooldown. Maven can also teleport to a random point of the arena (`kind: teleport`).
+`memory`. Its first use in a fight is always a 3-step pattern, every later one has 6
+steps, and its cooldown is 60 s. It never appears before 60 s of combat unless a
+Nucleus has already been defeated — after each Nucleus phase Maven prefers Memory
+Game with 90% probability (other Maven attacks 10%) and that preference takes effect
+immediately. Other Maven attacks have a 5 s cooldown. Maven can also teleport to a random point of the arena (`kind: teleport`).
 The arena also has two small platforms on the outer rim, 180° apart,
 sharing one rotation (`sim/platforms.ts`); they stop during Brain Blast and become the
 only safe spots. The platforms are elongated tangential capsules (`length`, `radius`
