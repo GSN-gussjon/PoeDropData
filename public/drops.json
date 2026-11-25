@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-24T17:41:40.803Z",
+  "generatedAt": "2026-11-25T17:11:40.358Z",
   "source": {
     "name": "poewiki.net",
     "url": "https://www.poewiki.net/",
@@ -1270,76 +1270,83 @@
               "rows": [
                 {
                   "name": "Atziri's Splendour",
-                  "chance": "42%",
+                  "chance": null,
                   "type": "other",
+                  "note": "42%pre-3.30",
                   "children": []
                 },
                 {
                   "name": "The Vertex",
-                  "chance": "40%",
+                  "chance": null,
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/d/d6/The_Vertex_inventory_icon.png",
-                  "children": []
-                },
-                {
-                  "name": "Atziri's Acuity",
-                  "chance": "6%",
-                  "type": "other",
-                  "iconUrl": "https://www.poewiki.net/images/b/bc/Atziri%27s_Acuity_inventory_icon.png",
+                  "note": "40%pre-3.30",
                   "children": []
                 },
                 {
                   "name": "Triumvirate Authority",
-                  "chance": "5%",
+                  "chance": null,
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/2/22/Triumvirate_Authority_inventory_icon.png",
+                  "note": "5%pre-3.30",
                   "children": []
                 },
                 {
                   "name": "Atziri's Reflection",
-                  "chance": "4%",
+                  "chance": null,
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/5/50/Atziri%27s_Reflection_inventory_icon.png",
+                  "note": "4%pre-3.30",
                   "children": []
                 },
                 {
                   "name": "Atziri's Disfavour",
-                  "chance": "2%",
+                  "chance": null,
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/d/da/Atziri%27s_Disfavour_inventory_icon.png",
+                  "note": "2%pre-3.30",
                   "children": []
                 },
                 {
                   "name": "Atziri's Rule",
-                  "chance": "1%",
+                  "chance": null,
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/a/a8/Atziri%27s_Rule_inventory_icon.png",
+                  "note": "1%pre-3.30",
+                  "children": []
+                },
+                {
+                  "name": "Atziri's Acuity",
+                  "chance": null,
+                  "type": "other",
+                  "iconUrl": "https://www.poewiki.net/images/b/bc/Atziri%27s_Acuity_inventory_icon.png",
+                  "note": "6%pre-3.30",
                   "children": []
                 },
                 {
                   "name": "Soul Core of Instability",
-                  "chance": null,
+                  "chance": "~25%",
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/0/08/Soul_Core_of_Instability_inventory_icon.png",
                   "children": []
                 },
                 {
                   "name": "Soul Core of Might",
-                  "chance": null,
+                  "chance": "~8%",
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/a/a3/Soul_Core_of_Might_inventory_icon.png",
                   "children": []
                 },
                 {
                   "name": "Soul Core of Finesse",
-                  "chance": null,
+                  "chance": "~8%",
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/e/ec/Soul_Core_of_Finesse_inventory_icon.png",
                   "children": []
                 },
                 {
                   "name": "Soul Core of Intellect",
-                  "chance": null,
+                  "chance": "~8%",
                   "type": "other",
                   "iconUrl": "https://www.poewiki.net/images/3/31/Soul_Core_of_Intellect_inventory_icon.png",
                   "children": []
